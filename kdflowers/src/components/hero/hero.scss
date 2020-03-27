@@ -1,0 +1,27 @@
+// Hero
+
+@import "../variables.scss";
+@import "../breakpoints.scss";
+
+#hero {
+  background: url("../../images/hero.jpg") center center no-repeat;
+  padding: 200px 0px 200px 0px;
+  background-size: cover;
+  height: 100%;
+  border-bottom: 3px solid $primary;
+  h1 {
+    font-size: 14px;
+    font-family: $nunito;
+  }
+  h2 {
+    font-size: 42px;
+    padding: 10px 0px 20px 0px;
+    @include bp-tablet-sm {
+      font-size: 28px;
+    }
+  }
+  h1,
+  h2 {
+    color: $white;
+  }
+}
