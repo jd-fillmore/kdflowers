@@ -1,0 +1,78 @@
+// Nav
+@import "../variables.scss";
+@import "../breakpoints.scss";
+
+nav {
+  padding-top: 40px;
+  @include bp-tablet-sm {
+    padding-top: 20px;
+  }
+  img {
+    width: 60px;
+    margin-bottom: 0px;
+  }
+  .row {
+    align-items: center;
+  }
+  .links {
+    display: flex;
+    justify-content: flex-end;
+    a {
+      font-size: 14px;
+      color: $white;
+      letter-spacing: 2px;
+      position: relative;
+      text-transform: uppercase;
+      text-decoration: none;
+      padding-bottom: 8px;
+      margin-left: 25px;
+      margin-right: 25px;
+      &:last-child {
+        margin-right: 0px;
+      }
+
+      &:before,
+      &:after {
+        content: "";
+        position: absolute;
+        bottom: 2px;
+        left: 0;
+        right: 0;
+        height: 2px;
+        background-color: $primary;
+      }
+      &:before {
+        opacity: 0;
+        transform: translateY(-$distance);
+        transition: transform 0s $easeOutBack, opacity 0s;
+      }
+      &:after {
+        opacity: 0;
+        transform: translateY($distance/2);
+        transition: transform $duration $easeOutBack, opacity $duration;
+      }
+      &:hover,
+      &:focus {
+        &:before,
+        &:after {
+          opacity: 1;
+          transform: translateY(0);
+        }
+        &:before {
+          transition: transform $duration $easeOutBack, opacity $duration;
+        }
+        &:after {
+          transition: transform 0s $duration $easeOutBack, opacity 0s $duration;
+        }
+      }
+      @include bp-tablet-sm {
+        margin-left: 5px;
+        margin-right: 5px;
+        font-size: 12px;
+      }
+      @include bp-mobile {
+        font-size: 10px;
+      }
+    }
+  }
+}

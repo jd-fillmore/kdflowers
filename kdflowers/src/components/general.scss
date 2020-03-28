@@ -4,18 +4,3 @@
 img {
   width: 100%;
 }
-
-.two {
-  margin-top: 30px;
-  @include bp-tablet-sm {
-    margin-top: 0px;
-  }
-}
-
-.logos {
-  margin-bottom: 40px;
-  img {
-    margin: 0 auto;
-    display: block;
-  }
-}

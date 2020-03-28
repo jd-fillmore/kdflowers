@@ -1,18 +1,17 @@
 import React from "react"
-import { Container, Row, Col } from "reactstrap"
-import { Link } from "gatsby"
 import { motion } from "framer-motion"
+import { Container, Row, Col } from "reactstrap"
 
-import "../hero/hero.scss"
+import "../inner-hero/inner-hero.scss"
 
 const variants = {
   hidden: { opacity: 0 },
   visible: { opacity: 1 },
 }
 
-function Hero({ title, subTitle, btnText }) {
+function InnerHero({ title }) {
   return (
-    <section id="hero">
+    <section id="inner-hero">
       <motion.div
         initial="hidden"
         animate="visible"
@@ -21,16 +20,9 @@ function Hero({ title, subTitle, btnText }) {
       >
         <Container>
           <Row>
-            <Col lg="9">
-              <h1>{title}</h1>
-
-              <h2>{subTitle}</h2>
-
-              <Link to="/book-consult">
-                <button>{btnText}</button>
-              </Link>
+            <Col lg="12">
+              <h1 className="text-center">{title}</h1>
             </Col>
-            <Col lg="3">&nbsp;</Col>
           </Row>
         </Container>
       </motion.div>
@@ -38,4 +30,4 @@ function Hero({ title, subTitle, btnText }) {
   )
 }
 
-export default Hero
+export default InnerHero
