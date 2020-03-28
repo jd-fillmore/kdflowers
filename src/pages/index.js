@@ -13,6 +13,7 @@ import Hero from "../components/hero/hero"
 import Nav from "../components/nav/nav"
 import Intro from "../components/intro/intro"
 import About from "../components/about/about"
+import Process from "../components/process/process"
 import CTA from "../components/cta/cta"
 
 const IndexPage = () => (
@@ -26,20 +27,29 @@ const IndexPage = () => (
     />
     <Intro
       title="Niagara Wedding Flowers &amp; Bridal Bouquets"
-      text="Are you looking for a wedding flowers or bridal bouquets in Niagara? You've come to the right person! I've been helping brides, their groomsmen and woman people for over 10 years by making them look good on their beautiful day. To see some of work, check out my portfolio by clicking the button below."
+      text="KD Flowers, Niagara wedding floral design focuses on one goal, which is creating lasting beautiful memories by designing personalized, elegant and lavish wedding flowers for my brides and grooms. Designing and creating wedding flowers is my passion and I do my best to make sure your wedding flowers reflect your style and love for each other. I work to capture all your wedding fantasies and make them a dream come true!"
       imgAlt="affordable wedding flowers niagara"
       btnText="View Portfolio"
     />
     <About
       title="Kylee Danielle"
       subTitle="Owner of KD Flowers"
-      text="Growing up, I never thought I would appreciate the beauty in floral as much as I do now. My name is Kylee Danielle, I am from Niagara, Ontario and I have a passion for floral design, and all things beautiful.
-
-      For over ten years, I have been helping people create their vision for the most important days of their lives. Whether it’s for a wedding, bridal shower, or baby shower, I will put the love and passion into my designs to make your special day blossom!
-
-      If you are looking for a affordable wedding flowers or cheap bridal bouquets in Niagara, that are of amazing quality, please feel free to contact me through the button below for a free consultation."
       imgAlt="cheap bridal bouquets niagara"
       btnText="Book A Consult"
+    />
+    <Process
+      mainTitle="My Process"
+      mainSubTitle="How I help my brides &amp; groomsmen"
+      titleOne="Consultation"
+      titleTwo="Plan"
+      titleThree="Ordering Process"
+      titleFour="Design &amp; Create"
+      textOne="Generally I prefer to meet my bride in person to discuss their
+      vision for their big day! If that is not a possibility, I have no
+      problem connecting via e-mail, phone call or text."
+      textTwo="Once I have an idea of your vision, I do my best to put it into perspective. Collecting all of your thoughts and imaginative ideas helps me give suggestions and envision what you are dreaming for your special day! Once I know what flowers, design, and style you fantasize about, I process an estimate which includes cost of flowers, labour and delivery."
+      textThree="I work out of my home, therefore I do not have my own warehouse full of flowers (as much as I would love that!). I always tell my brides they are welcome to have their flowers purchased from wherever they prefer. If there is no preference, I order from a local florist who has been very helpful and accommodating."
+      textFour="Once I have everything in order, I put my heart and soul into designing and creating your wedding flowers!"
     />
     <CTA />
   </Layout>
