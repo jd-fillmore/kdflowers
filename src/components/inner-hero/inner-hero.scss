@@ -1,0 +1,20 @@
+// Inner Hero
+@import "../variables.scss";
+@import "../breakpoints.scss";
+
+#inner-hero {
+  background: url("../../images/hero.jpg") center center no-repeat;
+  margin-top: -125px;
+  padding: 200px 0px 200px 0px;
+  background-size: cover;
+  background-attachment: fixed;
+  height: 100%;
+  border-bottom: 3px solid $primary;
+  @include bp-tablet-sm {
+    padding: 160px 0px 30px 0px;
+  }
+  h1 {
+    color: $white;
+    margin-bottom: 0px;
+  }
+}

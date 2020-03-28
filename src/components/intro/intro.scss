@@ -1,0 +1,31 @@
+// Intro
+
+@import "../variables.scss";
+@import "../breakpoints.scss";
+
+#intro {
+  padding: 120px 0px 120px 0px;
+  @include bp-tablet-sm {
+    padding: 40px 0px 40px 0px;
+  }
+  img {
+    border: 3px solid $primary;
+    box-shadow: 60px 60px 68px rgba(0, 0, 0, 0.02),
+      60px 60px 68px rgba(0, 0, 0, 0.3);
+    margin-top: -210px;
+    @include bp-tablet-sm {
+      margin-top: 30px;
+      margin-bottom: 0px;
+      box-shadow: 30px 30px 68px rgba(0, 0, 0, 0.02),
+        30px 30px 68px rgba(0, 0, 0, 0.2);
+    }
+  }
+  button {
+    color: $body;
+    margin-top: 20px;
+    &:hover,
+    &:focus {
+      color: $white;
+    }
+  }
+}
