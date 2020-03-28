@@ -39,7 +39,7 @@ const IndexPage = () => (
     />
     <Process
       mainTitle="My Process"
-      mainSubTitle="How I help my brides &amp; groomsmen"
+      mainSubTitle="How I can help you"
       titleOne="Consultation"
       titleTwo="Plan"
       titleThree="Ordering Process"

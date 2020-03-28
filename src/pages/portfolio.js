@@ -10,19 +10,49 @@ import CTA from "../components/cta/cta"
 
 import "../../node_modules/react-image-gallery/styles/scss/image-gallery.scss"
 import "../components/image-gallery.scss"
+import "../components/portfolio.scss"
+
+import imageOne from "../images/1.jpg"
+import imageTwo from "../images/2.jpg"
+import imageThree from "../images/3.jpg"
+import imageFour from "../images/4.jpg"
+import imageFive from "../images/5.jpg"
+import imageSix from "../images/6.jpg"
+import imageSeven from "../images/7.jpg"
+import imageEight from "../images/8.jpg"
 
 const images = [
   {
-    original: "https://picsum.photos/id/1018/1000/600/",
-    thumbnail: "https://picsum.photos/id/1018/250/150/",
+    original: imageOne,
+    thumbnail: imageOne,
   },
   {
-    original: "https://picsum.photos/id/1015/1000/600/",
-    thumbnail: "https://picsum.photos/id/1015/250/150/",
+    original: imageTwo,
+    thumbnail: imageTwo,
   },
   {
-    original: "https://picsum.photos/id/1019/1000/600/",
-    thumbnail: "https://picsum.photos/id/1019/250/150/",
+    original: imageThree,
+    thumbnail: imageThree,
+  },
+  {
+    original: imageFour,
+    thumbnail: imageFour,
+  },
+  {
+    original: imageFive,
+    thumbnail: imageFive,
+  },
+  {
+    original: imageSix,
+    thumbnail: imageSix,
+  },
+  {
+    original: imageSeven,
+    thumbnail: imageSeven,
+  },
+  {
+    original: imageEight,
+    thumbnail: imageEight,
   },
 ]
 
@@ -31,13 +61,23 @@ const Portfolio = () => (
     <SEO title="Portfolio" />
     <Nav />
     <InnerHero title="Portfolio" />
-    <Container>
-      <Row>
-        <Col lg="12">
-          <ImageGallery items={images} />
-        </Col>
-      </Row>
-    </Container>
+    <section id="portfolio">
+      <Container>
+        <Row>
+          <Col lg="12">
+            <ImageGallery items={images} />
+            <br />
+            <a
+              href="https://instagram.com/kdflowersniagara"
+              rel="noopener noreferrer"
+              target="_blank"
+            >
+              <button id="instagram">View More Photos</button>
+            </a>
+          </Col>
+        </Row>
+      </Container>
+    </section>
     <CTA />
   </Layout>
 )

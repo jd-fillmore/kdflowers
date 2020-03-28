@@ -1,0 +1,18 @@
+// Portfolio
+@import "../components/variables.scss";
+@import "../components/breakpoints.scss";
+
+#portfolio {
+  button#instagram {
+    margin: 0 auto;
+    display: block;
+    color: $body;
+    &:focus,
+    &:hover {
+      color: $white;
+    }
+  }
+  a {
+    text-decoration: none;
+  }
+}
