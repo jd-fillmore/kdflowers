@@ -28,7 +28,7 @@ const IndexPage = () => (
     />
     <Intro
       title="Niagara Wedding Flowers &amp; Bridal Bouquets"
-      text="KD Flowers, Niagara wedding floral design focuses on one goal, which is creating lasting beautiful memories by designing personalized, elegant and lavish wedding flowers for my brides and grooms. Designing and creating wedding flowers is my passion and I do my best to make sure your wedding flowers reflect your style and love for each other. I work to capture all your wedding fantasies and make them a dream come true!"
+      text="KD Flowers wedding floral design focuses on one goal - creating lasting beautiful memories by designing personalized, elegant and lavish wedding flowers for brides and grooms all over Niagara. Designing and creating wedding flowers is my passion and I do my best to make sure your wedding flowers reflect your style and love for each other. I work to capture all your wedding fantasies and make them a dream come true!"
       imgAlt="affordable wedding flowers niagara"
       btnText="View Portfolio"
     />

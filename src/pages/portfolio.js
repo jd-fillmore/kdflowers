@@ -21,6 +21,8 @@ import imageSix from "../images/6.jpg"
 import imageSeven from "../images/7.jpg"
 import imageEight from "../images/8.jpg"
 import imageNine from "../images/9.jpg"
+import imageTen from "../images/10.jpg"
+import imageEleven from "../images/11.jpg"
 
 const images = [
   {
@@ -58,6 +60,14 @@ const images = [
   {
     original: imageNine,
     thumbnail: imageNine,
+  },
+  {
+    original: imageTen,
+    thumbnail: imageTen,
+  },
+  {
+    original: imageEleven,
+    thumbnail: imageEleven,
   },
 ]
 

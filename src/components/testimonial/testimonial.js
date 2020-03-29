@@ -11,7 +11,9 @@ function Testimonial({ title, text, author, imgAlt }) {
         <Row>
           <Col lg="6">
             <h2>{title}</h2>
-            <p>{text}</p>
+            <p>
+              <em>"{text}"</em>
+            </p>
             <p>- {author}</p>
           </Col>
           <Col lg={{ size: 5, offset: 1 }}>
