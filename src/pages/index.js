@@ -52,7 +52,12 @@ const IndexPage = () => (
       textThree="I work out of my home, therefore I do not have my own warehouse full of flowers (as much as I would love that!). I always tell my brides they are welcome to have their flowers purchased from wherever they prefer. If there is no preference, I order from a local florist who has been very helpful and accommodating."
       textFour="Once I have everything in order, I put my heart and soul into designing and creating your wedding flowers!"
     />
-    <Testimonial title="A Word From A Past Client" text="Amazing prices for what we requested. Thank you Kylee for our beautiful flowers!!" author="Denice V."/>
+    <Testimonial
+      title="Client Testimonial"
+      text="Kylee did an amazing job on your flowers! They turned out stunning! She was always answering my silly questions I might have and is amazing to work with. Amazing prices for what we requested. Thank you Kylee for our beautiful flowers!!"
+      author="Denice V."
+      imgAlt="KD Flowers Testimonial"
+    />
     <CTA />
   </Layout>
 )
