@@ -23,7 +23,7 @@ function CTA({ title, text }) {
             <Col lg="6">
               <h2>Need affordable wedding flowers or a bridal bouquet?</h2>
               <p>
-                Fill out the form and I'll get back to you as soon as I can.
+                Fill out the form and I'll get back to you as soon as I can!
               </p>
             </Col>
             <Col lg="6">
