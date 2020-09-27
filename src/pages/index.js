@@ -19,23 +19,23 @@ import CTA from "../components/cta/cta"
 
 const IndexPage = () => (
   <Layout>
-    <SEO title="Affordable Wedding Flowers Niagara, Cheap Bridal Bouquets" />
+    <SEO title="Affordable Wedding Flowers Niagara, St. Catharines Bridal Bouquets" />
     <Nav />
     <Hero
-      title="Affordable Wedding Flowers &amp; Bridal Bouquets in Niagara"
+      title="Affordable Wedding Flowers &amp; Bridal Bouquets in Niagara &amp; St. Catharines"
       subTitle="Quality wedding flowers &amp; bridal bouquets at an affordable price"
       btnText="Book A Consult"
     />
     <Intro
-      title="Niagara Wedding Flowers &amp; Bridal Bouquets"
-      text="KD Flowers wedding floral design focuses on one goal - creating lasting beautiful memories by designing personalized, elegant and lavish wedding flowers for brides and grooms all over Niagara. Designing and creating wedding flowers is my passion and I do my best to make sure your wedding flowers reflect your style and love for each other. I work to capture all your wedding fantasies and make them a dream come true!"
+      title="Niagara Wedding Flowers &amp; St. Catharines Bridal Bouquets"
+      text="KD Flowers wedding floral design focuses on one goal - creating lasting beautiful memories by designing personalized, elegant and lavish wedding flowers for brides and grooms all over Niagara &amp; St. Catharines. Designing and creating wedding flowers is my passion and I do my best to make sure your wedding flowers reflect your style and love for each other. I work to capture all your wedding fantasies and make them a dream come true!"
       imgAlt="affordable wedding flowers niagara"
       btnText="View Portfolio"
     />
     <About
       title="Kylee Danielle"
       subTitle="Owner of KD Flowers"
-      imgAlt="cheap bridal bouquets niagara"
+      imgAlt="cheap bridal bouquets niagara and st. catharines"
       btnText="Book A Consult"
     />
     <Process

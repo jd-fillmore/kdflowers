@@ -68,6 +68,16 @@ function CTA({ title, text }) {
             </Col>
           </Row>
         </Container>
+        <Container>
+          <Row>
+            <Col lg="12">
+              <p>
+                <a href="https://infused.agency">Niagara web design</a> by
+                Infused Agency
+              </p>
+            </Col>
+          </Row>
+        </Container>
       </section>
     </motion.div>
   )
