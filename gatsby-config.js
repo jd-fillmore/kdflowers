@@ -23,18 +23,10 @@ module.exports = {
       },
     },
     {
-      resolve: `gatsby-plugin-prefetch-google-fonts`,
+      resolve: `gatsby-plugin-google-fonts`,
       options: {
-        fonts: [
-          {
-            family: `Poppins`,
-            variants: [`400`, `700`],
-          },
-          {
-            family: `Libre Baskerville`,
-            variants: [`400`, `700`],
-          },
-        ],
+        fonts: [`Libre Baskerville\:400,700`, `Poppins\:400,700`],
+        display: "swap",
       },
     },
     `gatsby-plugin-react-helmet`,

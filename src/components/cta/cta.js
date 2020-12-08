@@ -1,4 +1,5 @@
 import React from "react"
+import { Link } from "gatsby"
 import { Container, Row, Col } from "reactstrap"
 import { motion } from "framer-motion"
 
@@ -72,8 +73,8 @@ function CTA({ title, text }) {
           <Row>
             <Col lg="12">
               <p>
-                <a href="https://infused.agency">Niagara web design</a> by
-                Infused Agency
+                <Link to="/infused">Web design &amp; SEO</Link> by Infused
+                Agency
               </p>
             </Col>
           </Row>
