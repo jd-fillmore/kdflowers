@@ -26,6 +26,23 @@ function CTA({ title, text }) {
               <p>
                 Fill out the form and I'll get back to you as soon as I can!
               </p>
+              <br />
+              <h5>Areas served</h5>
+              <p>
+                <Link to="/wedding-flowers-beamsville">Beamsville</Link>,{""}
+                <Link to="/wedding-flowers-fonthill">Fonthill</Link>,
+                <Link to="/wedding-flowers-fort-erie">Fort Erie</Link>,
+                <Link to="/wedding-flowers-grimsby">Grimsby</Link>,
+                <Link to="/wedding-flowers-jordan-on">Jordan</Link>,
+                <Link to="/wedding-flowers-pelham">Pelham</Link>,
+                <Link to="/wedding-flowers-port-colborne">Port Colborne</Link>,
+                <Link to="/wedding-flowers-smithville">Smithville</Link>,
+                <Link to="/wedding-flowers-thorold">Thorold</Link>,
+                <Link to="/wedding-flowers-vineland">Vineland</Link>,
+                <Link to="/wedding-flowers-virgil">Virgil</Link>,
+                <Link to="/wedding-flowers-wainfleet">Wainfleet</Link>,
+                <Link to="/wedding-flowers-welland">Welland</Link>,
+              </p>
             </Col>
             <Col lg="6">
               <form
