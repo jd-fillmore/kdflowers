@@ -1,5 +1,6 @@
 module.exports = {
   siteMetadata: {
+    siteUrl: `https://kdflowers.ca`,
     title: `KD Flowers`,
     description: `Looking for affordable wedding flowers, or cheap bridal bouqets in Niagara? You've come to the right place. Click here to get a quote!`,
     author: `JD Fillmore`,
@@ -40,6 +41,7 @@ module.exports = {
     `gatsby-plugin-sass`,
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
+    `gatsby-plugin-sitemap`,
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
