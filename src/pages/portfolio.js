@@ -12,6 +12,13 @@ import "../../node_modules/react-image-gallery/styles/scss/image-gallery.scss"
 import "../components/image-gallery.scss"
 import "../components/portfolio.scss"
 
+import backOne from "../images/back-1.jpg"
+import backTwo from "../images/back-2.jpg"
+import backThree from "../images/back-3.jpg"
+import backFour from "../images/back-4.jpg"
+import backFive from "../images/back-5.jpg"
+import kristineOne from "../images/kristine-1.jpg"
+import kristineTwo from "../images/kristine-2.jpg"
 import imageOne from "../images/1.jpg"
 import imageTwo from "../images/2.jpg"
 import imageThree from "../images/3.jpg"
@@ -25,6 +32,34 @@ import imageTen from "../images/10.jpg"
 import imageEleven from "../images/11.jpg"
 
 const images = [
+  {
+    original: backOne,
+    thumbnail: backOne,
+  },
+  {
+    original: backTwo,
+    thumbnail: backTwo,
+  },
+  {
+    original: backThree,
+    thumbnail: backThree,
+  },
+  {
+    original: backFour,
+    thumbnail: backFour,
+  },
+  {
+    original: backFive,
+    thumbnail: backFive,
+  },
+  {
+    original: kristineOne,
+    thumbnail: kristineOne,
+  },
+  {
+    original: kristineTwo,
+    thumbnail: kristineTwo,
+  },
   {
     original: imageOne,
     thumbnail: imageOne,
