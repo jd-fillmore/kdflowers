@@ -26,9 +26,12 @@ function Hero({ title, subTitle, btnText }) {
 
               <h2>{subTitle}</h2>
 
-              <Link to="/book-consult">
+              <a
+                target="_blank"
+                href="https://calendly.com/kdflowers/free-consult"
+              >
                 <button>{btnText}</button>
-              </Link>
+              </a>
             </Col>
             <Col lg="3">&nbsp;</Col>
           </Row>

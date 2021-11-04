@@ -18,7 +18,12 @@ const Nav = () => {
           <Col xs="10" md="6" className="links">
             <Link to="/">Home</Link>
             <Link to="/portfolio">Portfolio</Link>
-            <Link to="/book-consult">Book A Consult</Link>
+            <a
+              href="https://calendly.com/kdflowers/free-consult"
+              target="_blank"
+            >
+              Book A Consult
+            </a>
           </Col>
         </Row>
       </Container>

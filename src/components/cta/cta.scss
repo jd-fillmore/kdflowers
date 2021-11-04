@@ -9,6 +9,7 @@
   }
   button {
     color: $body;
+    margin-bottom: 20px;
   }
   @include bp-tablet-sm {
     form {

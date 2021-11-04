@@ -50,9 +50,12 @@ function About({ title, subTitle, text, imgAlt, btnText }) {
                 with me through the link in the upper right hand corner. I look
                 forward to meeting you!
               </p>
-              <Link to="/book-consult">
+              <a
+                href="https://calendly.com/kdflowers/free-consult"
+                target="_blank"
+              >
                 <button>{btnText}</button>
-              </Link>
+              </a>
             </Col>
           </Row>
         </Container>
