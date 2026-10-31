@@ -1,0 +1,55 @@
+---
+import { Image } from "astro:assets"
+import introImage from "../assets/images/affordable-wedding-flowers-niagara.jpg"
+import secondaryImage from "../assets/images/kristine-2.jpg"
+import { home } from "../data/site"
+---
+
+<section class="ed-intro" id="intro">
+  <div class="container ed-intro__grid">
+    <div class="ed-intro__copy" data-reveal>
+      <p class="eyebrow">Meet Your Niagara Wedding Florist</p>
+      <h2>{home.introTitle}</h2>
+      <p class="ed-intro__text">{home.introText}</p>
+
+      <div class="ed-intro__signature">
+        <p class="signature">Kylee Danielle</p>
+        <p class="signature__role">Founder &amp; floral designer</p>
+      </div>
+
+      <a class="text-link" href="/about/">Meet Kylee</a>
+    </div>
+
+    <div class="ed-intro__media" data-reveal>
+      <div class="ed-intro__composition">
+        <figure class="ed-intro__main">
+          <Image
+            src={introImage}
+            alt={home.introAlt}
+            width={539}
+            height={732}
+            widths={[360, 539, 720]}
+            sizes="(max-width: 900px) 100vw, 42vw"
+            format="webp"
+            quality={84}
+            loading="lazy"
+          />
+        </figure>
+        <figure class="ed-intro__secondary">
+          <Image
+            src={secondaryImage}
+            alt="Bride and groom walking through a garden with a colourful bridal bouquet"
+            width={1000}
+            height={600}
+            widths={[320, 480, 640]}
+            sizes="(max-width: 900px) 60vw, 22vw"
+            format="webp"
+            quality={84}
+            loading="lazy"
+          />
+        </figure>
+      </div>
+      <p class="ed-intro__caption">Niagara &amp; St. Catharines, Ontario</p>
+    </div>
+  </div>
+</section>

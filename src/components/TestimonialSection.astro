@@ -1,0 +1,37 @@
+---
+import { Image } from "astro:assets"
+import testimonialImage from "../assets/images/testimonial.jpg"
+import { testimonial } from "../data/site"
+---
+
+<section class="section section--cream testimonial-section" id="testimonial">
+  <div class="container testimonial">
+    <div class="testimonial__media" data-reveal>
+      <figure class="media-frame">
+        <Image
+          src={testimonialImage}
+          alt={testimonial.imageAlt}
+          width={539}
+          height={514}
+          widths={[400, 539, 760]}
+          sizes="(max-width: 900px) 100vw, 38vw"
+          format="webp"
+          quality={84}
+          loading="lazy"
+        />
+      </figure>
+    </div>
+
+    <div class="testimonial__body" data-reveal>
+      <p class="eyebrow">Kind words</p>
+      <h2>{testimonial.title}</h2>
+      <blockquote class="testimonial__quote">
+        &ldquo;{testimonial.text}&rdquo;
+      </blockquote>
+      <p class="testimonial__author">
+        <span aria-hidden="true"></span>
+        {testimonial.author}
+      </p>
+    </div>
+  </div>
+</section>

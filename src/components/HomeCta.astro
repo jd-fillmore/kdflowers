@@ -1,0 +1,102 @@
+---
+import { Image } from "astro:assets"
+import ctaImage from "../assets/images/10.jpg"
+import { serviceAreas, site, cta } from "../data/site"
+
+type FinalCta = {
+  title?: string
+  text?: string
+  button?: string
+}
+
+type AreaLink = {
+  label: string
+  href: string
+}
+
+type Areas = {
+  eyebrow?: string
+  title?: string
+  intro?: string
+  areaNote?: string
+  items?: readonly AreaLink[]
+}
+
+type Props = {
+  finalCta?: FinalCta
+  areas?: Areas
+}
+
+const { finalCta, areas } = Astro.props
+const finalCtaTitle = finalCta?.title ?? cta.title
+const finalCtaText = finalCta?.text ?? cta.text
+const finalCtaButton = finalCta?.button ?? cta.button
+const areasEyebrow = areas?.eyebrow
+const areasTitle = areas?.title ?? cta.areasTitle
+const areasIntro = areas?.intro
+const areasAreaNote =
+  areas?.areaNote ??
+  "Serving Niagara & St. Catharines, including these communities."
+const areaItems =
+  areas?.items ??
+  serviceAreas.map((area) => ({
+    label: area.navLabel,
+    href: `/wedding-flowers-${area.slug}/`,
+  }))
+---
+
+<section class="ed-cta" id="book-a-consult">
+  <div class="ed-cta__media" aria-hidden="true">
+    <Image
+      src={ctaImage}
+      alt=""
+      width={1000}
+      height={600}
+      widths={[768, 1280, 1920]}
+      sizes="100vw"
+      format="webp"
+      quality={78}
+      loading="lazy"
+    />
+  </div>
+
+  <div class="container ed-cta__grid" data-reveal>
+    <div class="ed-cta__copy">
+      <p class="eyebrow">Begin your flowers</p>
+      <h2>{finalCtaTitle}</h2>
+      <p class="ed-cta__text">{finalCtaText}</p>
+      <a
+        class="button button--cream"
+        href={site.booking}
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        {finalCtaButton}
+        <span class="sr-only"> (opens in a new tab)</span>
+      </a>
+      <p class="ed-cta__note">Free consultation, booked in advance.</p>
+    </div>
+
+    <div class="ed-cta__areas">
+      {areasEyebrow ? <p class="eyebrow">{areasEyebrow}</p> : null}
+      {
+        areas ? (
+          <h2 class="ed-cta__areas-title">{areasTitle}</h2>
+        ) : (
+          <h3>{areasTitle}</h3>
+        )
+      }
+      {areasIntro ? <p class="ed-cta__area-intro">{areasIntro}</p> : null}
+      <ul class="areas-list">
+        {
+          areaItems.map((area) => (
+            <li>
+              <a href={area.href}>{area.label}</a>
+            </li>
+          ))
+        }
+      </ul>
+      <p class="ed-cta__area-note">{areasAreaNote}</p>
+    </div>
+  </div>
+</section>

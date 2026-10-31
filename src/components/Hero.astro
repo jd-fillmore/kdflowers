@@ -1,0 +1,55 @@
+---
+import { Image } from "astro:assets"
+import heroImage from "../assets/images/hero.jpg"
+import { site } from "../data/site"
+
+type Props = {
+  title: string
+  subtitle?: string
+  ctaLabel?: string
+  inner?: boolean
+}
+
+const {
+  title,
+  subtitle,
+  ctaLabel = "Book A Consult",
+  inner = false,
+} = Astro.props
+---
+
+<section class:list={["hero", { "hero--inner": inner }]}>
+  <div class="hero__media" aria-hidden="true">
+    <Image
+      src={heroImage}
+      alt=""
+      width={1920}
+      height={600}
+      widths={[640, 960, 1280, 1920]}
+      sizes="100vw"
+      format="webp"
+      quality={80}
+      loading="eager"
+      fetchpriority="high"
+    />
+  </div>
+  <div class="container hero__content">
+    <h1>{title}</h1>
+    {subtitle && <p class="hero__subtitle">{subtitle}</p>}
+    {
+      !inner && (
+        <div class="hero__actions">
+          <a
+            class="button button--light"
+            href={site.booking}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            {ctaLabel}
+            <span class="sr-only"> (opens in a new tab)</span>
+          </a>
+        </div>
+      )
+    }
+  </div>
+</section>

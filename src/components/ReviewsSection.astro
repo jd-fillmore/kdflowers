@@ -1,0 +1,45 @@
+---
+import ReviewCard from "./ReviewCard.astro"
+import { featuredReviews, type Review } from "../data/reviews"
+
+type Props = {
+  eyebrow?: string
+  title?: string
+  intro?: string
+  reviews?: Review[]
+  limit?: number
+  compact?: boolean
+}
+
+const {
+  eyebrow = "Kind words",
+  title = "Loved by Niagara couples.",
+  intro,
+  reviews = featuredReviews,
+  limit = 3,
+  compact = false,
+} = Astro.props
+
+const selected = reviews.slice(0, limit)
+---
+
+<section
+  class:list={["pg-reviews-strip", { "pg-reviews-strip--compact": compact }]}
+>
+  <div class="container">
+    <div class="pg-reviews-strip__head">
+      <div>
+        <p class="eyebrow">{eyebrow}</p>
+        <h2>{title}</h2>
+        {intro && <p class="lede">{intro}</p>}
+      </div>
+      <a class="text-link pg-reviews-strip__link" href="/reviews/">
+        Read all reviews
+      </a>
+    </div>
+
+    <div class="pg-reviews-strip__grid">
+      {selected.map((review) => <ReviewCard review={review} featured />)}
+    </div>
+  </div>
+</section>

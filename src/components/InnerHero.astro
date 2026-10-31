@@ -1,0 +1,11 @@
+---
+import Hero from "./Hero.astro"
+
+type Props = {
+  title: string
+}
+
+const { title } = Astro.props
+---
+
+<Hero title={title} inner />

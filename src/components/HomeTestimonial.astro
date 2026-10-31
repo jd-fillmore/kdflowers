@@ -1,0 +1,32 @@
+---
+import { Image } from "astro:assets"
+import testimonialImage from "../assets/images/testimonial.jpg"
+import { testimonial } from "../data/site"
+---
+
+<section class="ed-quote" id="testimonial">
+  <div class="container">
+    <div class="ed-quote__inner">
+      <figure class="ed-quote__media" data-reveal>
+        <Image
+          src={testimonialImage}
+          alt={testimonial.imageAlt}
+          width={539}
+          height={514}
+          widths={[200, 300, 480]}
+          sizes="(max-width: 680px) 40vw, 9rem"
+          format="webp"
+          quality={84}
+          loading="lazy"
+        />
+      </figure>
+      <div data-reveal>
+        <p class="ed-quote__eyebrow">Kind words</p>
+        <blockquote class="ed-quote__quote">
+          &ldquo;{testimonial.text}&rdquo;
+        </blockquote>
+        <p class="ed-quote__author">{testimonial.author}</p>
+      </div>
+    </div>
+  </div>
+</section>

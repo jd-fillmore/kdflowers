@@ -1,0 +1,20 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro"
+
+const breadcrumbs = [{ label: "Home", href: "/" }, { label: "Page two" }]
+---
+
+<BaseLayout title="Page two" path="/page-2/" breadcrumbs={breadcrumbs}>
+  <section class="pg-basic">
+    <div class="container">
+      <div class="pg-basic__inner">
+        <p class="eyebrow">Page two</p>
+        <h1>Hi from the second page</h1>
+        <p class="pg-basic__text">Welcome to page 2</p>
+        <p class="pg-basic__actions">
+          <a class="text-link" href="/">Go back to the homepage</a>
+        </p>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

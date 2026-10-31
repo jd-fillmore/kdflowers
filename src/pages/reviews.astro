@@ -1,0 +1,51 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro"
+import PageHero from "../components/PageHero.astro"
+import ReviewCard from "../components/ReviewCard.astro"
+import HomeCta from "../components/HomeCta.astro"
+import reviewImage from "../assets/images/kristine-2.jpg"
+import { reviews } from "../data/reviews"
+
+const breadcrumbs = [{ label: "Home", href: "/" }, { label: "Reviews" }]
+---
+
+<BaseLayout
+  title="Client Reviews"
+  description="Read reviews from couples who chose KD Flowers for their Niagara and St. Catharines wedding flowers, bridal bouquets and wedding-party florals."
+  path="/reviews/"
+  breadcrumbs={breadcrumbs}
+>
+  <PageHero
+    title="Client reviews"
+    eyebrow="Kind words"
+    intro="The flowers are only part of the story. These are the words couples have shared after their wedding day."
+    image={reviewImage}
+    imageAlt="Bride and groom walking through a garden with a colourful bridal bouquet"
+    notes={[
+      "Real couples",
+      "Niagara wedding florals",
+      "St. Catharines & beyond",
+    ]}
+  />
+
+  <section class="pg-reviews-page">
+    <div class="container">
+      <div class="pg-reviews-page__head">
+        <div>
+          <p class="eyebrow">In their words</p>
+          <h2>Reviews from KD Flowers couples</h2>
+        </div>
+        <p class="pg-reviews-page__note">
+          Reviews are reproduced from Google and shown as submitted. Select
+          reviews may be shown as excerpts elsewhere on the site.
+        </p>
+      </div>
+
+      <div class="pg-reviews-page__grid">
+        {reviews.map((review) => <ReviewCard review={review} />)}
+      </div>
+    </div>
+  </section>
+
+  <HomeCta />
+</BaseLayout>

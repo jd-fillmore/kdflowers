@@ -1,0 +1,60 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro"
+import PageHero from "../components/PageHero.astro"
+import HomeCta from "../components/HomeCta.astro"
+import infusedHeroImage from "../assets/images/11.jpg"
+
+const breadcrumbs = [{ label: "Home", href: "/" }, { label: "Infused" }]
+---
+
+<BaseLayout title="Infused" path="/infused/" breadcrumbs={breadcrumbs}>
+  <PageHero
+    title="Infused"
+    eyebrow="A website case study"
+    intro="The story behind the KD Flowers website and its local search presence, built with Infused Agency."
+    image={infusedHeroImage}
+    imageAlt="Wedding party in burgundy dresses with the bride, groom and flower girl"
+    notes={["Website design", "Local SEO", "Niagara business"]}
+  />
+
+  <section class="pg-prose" id="infused-content">
+    <div class="container">
+      <div class="pg-prose__inner">
+        <p>
+          KD Flowers hired Infused Agency to help build them a modern website.
+          Along with this, they wanted to rank in Google for a few different
+          local keywords. The idea was to get a reputable website up and
+          running, but to also attract local clients.
+        </p>
+        <p>
+          At the time of this post, KD Flowers ranks on the first page of Google
+          for a myriad of local keywords that her customers search for. She
+          continues to get many leads a month solely through SEO efforts.
+        </p>
+        <p>
+          If you're a business looking for a new website, or you'd like to rank
+          high in Google for more customers to find you which will lead to more
+          revenue, contact one of the top{" "}
+          <a
+            href="https://infused.agency"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Niagara web design
+          </a>{" "}
+          and{" "}
+          <a
+            href="https://infused.agency"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Niagara SEO
+          </a>{" "}
+          companies for a free quote today.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <HomeCta />
+</BaseLayout>

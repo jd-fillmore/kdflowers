@@ -1,0 +1,58 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro"
+import PageHero from "../components/PageHero.astro"
+import AboutSection from "../components/AboutSection.astro"
+import WhySection from "../components/WhySection.astro"
+import HomeProcess from "../components/HomeProcess.astro"
+import ReviewsSection from "../components/ReviewsSection.astro"
+import HomeCta from "../components/HomeCta.astro"
+import aboutHeroImage from "../assets/images/kristine-1.jpg"
+import { home } from "../data/site"
+
+const breadcrumbs = [{ label: "Home", href: "/" }, { label: "About" }]
+---
+
+<BaseLayout
+  title="About Kylee Danielle"
+  description="Meet Kylee Danielle, owner of KD Flowers, and learn about her Niagara wedding floral design experience."
+  path="/about/"
+  breadcrumbs={breadcrumbs}
+  pageType="AboutPage"
+>
+  <PageHero
+    title="About KD Flowers"
+    eyebrow="Kylee Danielle"
+    intro="A personal wedding floral studio in Niagara, built on thoughtful design, honest pricing and flowers made for the people you love."
+    image={aboutHeroImage}
+    imageAlt="Bride and bridesmaids in turquoise dresses holding colourful wedding bouquets"
+    notes={[
+      "Over ten years of experience",
+      "Designed by Kylee",
+      "Niagara & St. Catharines",
+    ]}
+    secondaryLabel="View the portfolio"
+    secondaryHref="/portfolio/"
+  />
+
+  <AboutSection
+    title="Kylee Danielle"
+    subtitle="Owner of KD Flowers"
+    imgAlt="cheap bridal bouquets niagara and st. catharines"
+  />
+
+  <WhySection
+    eyebrow={home.why.eyebrow}
+    title={home.why.title}
+    items={home.why.items}
+  />
+
+  <HomeProcess
+    mainTitle={home.process.mainTitle}
+    mainSubtitle={home.process.mainSubtitle}
+    steps={home.process.steps}
+  />
+
+  <ReviewsSection limit={3} />
+
+  <HomeCta />
+</BaseLayout>

@@ -1,0 +1,45 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro"
+import HomeHero from "../components/HomeHero.astro"
+import HomeIntro from "../components/HomeIntro.astro"
+import ServicePreview from "../components/ServicePreview.astro"
+import FeaturedWork from "../components/FeaturedWork.astro"
+import WhySection from "../components/WhySection.astro"
+import HomeProcess from "../components/HomeProcess.astro"
+import HomeReviews from "../components/HomeReviews.astro"
+import HomeCta from "../components/HomeCta.astro"
+import HomeFaq from "../components/HomeFaq.astro"
+import { home } from "../data/site"
+import { floristSchema, websiteSchema } from "../lib/schema"
+---
+
+<BaseLayout
+  title={home.seoTitle}
+  description={home.metaDescription}
+  path="/"
+  headerVariant="overlay"
+  jsonLd={[floristSchema(), websiteSchema()]}
+>
+  <HomeHero />
+  <HomeIntro />
+  <ServicePreview
+    eyebrow={home.services.eyebrow}
+    title={home.services.title}
+    intro={home.services.intro}
+    items={home.services.items}
+  />
+  <FeaturedWork />
+  <WhySection
+    eyebrow={home.why.eyebrow}
+    title={home.why.title}
+    items={home.why.items}
+  />
+  <HomeProcess
+    mainTitle={home.process.mainTitle}
+    mainSubtitle={home.process.mainSubtitle}
+    steps={home.process.steps}
+  />
+  <HomeReviews />
+  <HomeFaq />
+  <HomeCta finalCta={home.finalCta} areas={home.areas} />
+</BaseLayout>

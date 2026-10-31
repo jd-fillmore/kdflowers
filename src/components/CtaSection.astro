@@ -1,0 +1,39 @@
+---
+import { serviceAreas, site, cta } from "../data/site"
+---
+
+<section class="cta" id="book-a-consult">
+  <div class="container cta__grid">
+    <div class="cta__copy" data-reveal>
+      <p class="eyebrow">Begin your flowers</p>
+      <h2>{cta.title}</h2>
+      <p>{cta.text}</p>
+      <a
+        class="button button--cream"
+        href={site.booking}
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        {cta.button}
+        <span class="sr-only"> (opens in a new tab)</span>
+      </a>
+      <p class="cta__note">Free consultation, booked in advance.</p>
+    </div>
+
+    <div class="cta__areas" data-reveal>
+      <h3>{cta.areasTitle}</h3>
+      <ul class="areas-list">
+        {
+          serviceAreas.map((area) => (
+            <li>
+              <a href={`/wedding-flowers-${area.slug}/`}>{area.navLabel}</a>
+            </li>
+          ))
+        }
+      </ul>
+      <p class="cta__area-note">
+        Serving Niagara &amp; St. Catharines, including these communities.
+      </p>
+    </div>
+  </div>
+</section>

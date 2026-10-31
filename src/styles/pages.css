@@ -1,0 +1,966 @@
+﻿/* =============================================
+   KD Flowers â€” editorial system for inner pages
+   Builds on the homepage `ed-` language without
+   changing the approved homepage composition.
+   ============================================= */
+
+/* ------------------------------
+   Inner-page hero
+------------------------------ */
+
+.ed-hero--page {
+  min-height: clamp(30rem, 64vh, 44rem);
+  padding-block: clamp(7rem, 13vh, 10rem) clamp(2.6rem, 5vw, 4.2rem);
+}
+
+.ed-hero--page .ed-hero__inner h1 {
+  max-width: 20ch;
+  font-size: clamp(2.5rem, 5vw, 4.4rem);
+}
+
+.ed-hero--page .ed-hero__copy {
+  max-width: 56ch;
+}
+
+.ed-hero--page .ed-hero__actions .text-link {
+  color: var(--white);
+}
+
+.ed-hero--page .ed-hero__actions .text-link:hover,
+.ed-hero--page .ed-hero__actions .text-link:focus-visible {
+  color: var(--rose-soft);
+}
+
+.ed-hero--page .ed-hero__note {
+  margin-top: 2rem;
+}
+
+/* Keep the expanded navigation comfortable with the added Reviews link. */
+@media (min-width: 901px) and (max-width: 1120px) {
+  .header-inner {
+    gap: 1rem;
+  }
+
+  .site-nav {
+    gap: 1.2rem;
+  }
+
+  .site-nav ul {
+    gap: 1rem;
+  }
+
+  .site-nav a:not(.button) {
+    font-size: 0.6rem;
+    letter-spacing: 0.16em;
+  }
+
+  .brand__place {
+    display: none;
+  }
+}
+
+/* ------------------------------
+   Reviews — stars and cards
+------------------------------ */
+
+.review-stars {
+  display: inline-flex;
+  color: var(--rose);
+}
+
+.review-stars__icons {
+  display: inline-flex;
+  gap: 0.16rem;
+}
+
+.review-stars__star {
+  width: 0.82rem;
+  height: 0.82rem;
+  flex: 0 0 auto;
+}
+
+.review-stars__star.is-empty {
+  color: var(--line);
+}
+
+.review-card {
+  display: flex;
+  flex-direction: column;
+  padding: clamp(1.4rem, 2.4vw, 2rem);
+  background: var(--white);
+  border: 1px solid var(--line);
+}
+
+.review-card__top {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem 1rem;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.25rem;
+}
+
+.review-card__note {
+  color: var(--muted);
+  font-size: 0.57rem;
+  letter-spacing: 0.17em;
+  text-transform: uppercase;
+}
+
+.review-card__quote {
+  margin: 0;
+  color: var(--body);
+  font-size: 0.95rem;
+  line-height: 1.85;
+}
+
+.review-card__quote p + p {
+  margin-top: 0.9rem;
+}
+
+.review-card__author {
+  margin: auto 0 0;
+  padding-top: 1.3rem;
+  color: var(--ink);
+  font-family: var(--serif);
+  font-size: 1.2rem;
+  font-style: italic;
+  line-height: 1.2;
+}
+
+.review-card--featured {
+  background: var(--paper);
+}
+
+.review-card--featured .review-card__quote {
+  color: var(--ink);
+  font-family: var(--serif);
+  font-size: clamp(1.1rem, 1.55vw, 1.28rem);
+  line-height: 1.65;
+}
+
+.review-card--featured .review-card__author {
+  font-family: var(--sans);
+  font-size: 0.63rem;
+  font-style: normal;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+/* ------------------------------
+   Homepage reviews
+------------------------------ */
+
+.ed-reviews {
+  padding-block: var(--section-space);
+  background: var(--paper);
+}
+
+.ed-reviews__head {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 2rem;
+  align-items: end;
+  margin-bottom: clamp(2.5rem, 4vw, 3.8rem);
+}
+
+.ed-reviews__head h2 {
+  max-width: 15ch;
+  margin-bottom: 0;
+}
+
+.ed-reviews__link {
+  margin-bottom: 0.5rem;
+}
+
+.ed-reviews__grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(0.9rem, 2vw, 1.5rem);
+}
+
+.ed-reviews__note {
+  margin: 1.8rem 0 0;
+  color: var(--muted);
+  font-size: 0.72rem;
+  letter-spacing: 0.05em;
+  text-align: center;
+}
+
+/* ------------------------------
+   Reviews sections on inner pages
+------------------------------ */
+
+.pg-reviews-strip {
+  padding-block: var(--section-space-sm);
+  background: var(--paper);
+}
+
+.pg-reviews-strip--compact {
+  background: var(--paper-deep);
+}
+
+.pg-reviews-strip__head {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem 3rem;
+  align-items: end;
+  justify-content: space-between;
+  margin-bottom: clamp(2rem, 3.5vw, 3rem);
+}
+
+.pg-reviews-strip__head h2 {
+  max-width: 16ch;
+  margin-bottom: 0;
+}
+
+.pg-reviews-strip__head .lede {
+  max-width: 52ch;
+  margin: 1rem 0 0;
+}
+
+.pg-reviews-strip__link {
+  flex: 0 0 auto;
+  margin-bottom: 0.35rem;
+}
+
+.pg-reviews-strip__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 17rem), 1fr));
+  gap: clamp(0.9rem, 2vw, 1.3rem);
+}
+
+/* ------------------------------
+   Reviews page
+------------------------------ */
+
+.pg-reviews-page {
+  padding-block: var(--section-space);
+  background: var(--paper);
+}
+
+.pg-reviews-page__head {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 0.72fr);
+  gap: clamp(1.5rem, 5vw, 5rem);
+  align-items: end;
+  margin-bottom: clamp(2.5rem, 4vw, 4rem);
+  padding-bottom: 1.6rem;
+  border-bottom: 1px solid var(--line);
+}
+
+.pg-reviews-page__head h2 {
+  max-width: 17ch;
+  margin-bottom: 0;
+}
+
+.pg-reviews-page__note {
+  max-width: 46ch;
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.82rem;
+  line-height: 1.75;
+}
+
+.pg-reviews-page__grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(0.9rem, 2vw, 1.4rem);
+  align-items: start;
+}
+
+.pg-reviews-page__grid .review-card:nth-child(4n + 2),
+.pg-reviews-page__grid .review-card:nth-child(4n + 3) {
+  background: var(--cream);
+}
+
+/* ------------------------------
+   City introduction
+------------------------------ */
+
+.pg-city-intro {
+  padding-block: var(--section-space);
+  overflow: hidden;
+  background: var(--paper);
+}
+
+.pg-city-intro__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.08fr) minmax(0, 0.92fr);
+  gap: clamp(2.5rem, 6vw, 5.5rem);
+  align-items: center;
+}
+
+.pg-city-intro__copy h2 {
+  max-width: 18ch;
+  margin-bottom: 1.4rem;
+}
+
+.pg-city-intro__text {
+  max-width: 58ch;
+  font-size: 1.02rem;
+  line-height: 1.9;
+}
+
+.pg-city-intro__signature {
+  margin: 2rem 0 1.8rem;
+  padding-top: 1.4rem;
+  border-top: 1px solid var(--line);
+}
+
+.pg-city-intro__media {
+  position: relative;
+  margin: 0;
+  padding: 0 1.4rem 1.4rem 0;
+}
+
+.pg-city-intro__media::before {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: 72%;
+  height: 72%;
+  border: 1px solid var(--rose-soft);
+  content: "";
+}
+
+.pg-city-intro__media img {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  margin: 0;
+  object-fit: cover;
+}
+
+.pg-city-intro__caption {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  gap: 0.75rem;
+  align-items: center;
+  margin: 1.1rem 0 0;
+  color: var(--muted);
+  font-size: 0.6rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+.pg-city-intro__caption::before {
+  width: 2rem;
+  height: 1px;
+  background: var(--rose);
+  content: "";
+}
+
+/* ------------------------------
+   About / story section
+------------------------------ */
+
+.pg-story {
+  padding-block: var(--section-space);
+  overflow: hidden;
+  background: var(--paper-deep);
+}
+
+.pg-story__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+  gap: clamp(2.5rem, 7vw, 6rem);
+  align-items: center;
+}
+
+.pg-story__media {
+  position: relative;
+  margin: 0;
+  padding: 1.2rem 0 0 1.2rem;
+}
+
+.pg-story__media::before {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 74%;
+  height: 76%;
+  border: 1px solid var(--rose-soft);
+  content: "";
+}
+
+.pg-story__media img {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  margin: 0;
+  object-fit: cover;
+}
+
+.pg-story__caption {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  gap: 0.75rem;
+  align-items: center;
+  margin: 1.2rem 0 0;
+  color: var(--muted);
+  font-size: 0.6rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+.pg-story__caption::before {
+  width: 2rem;
+  height: 1px;
+  background: var(--rose);
+  content: "";
+}
+
+.pg-story__copy h2 {
+  max-width: 12ch;
+  margin-bottom: 1.3rem;
+}
+
+.pg-story__text {
+  max-width: 60ch;
+}
+
+.pg-story__text p {
+  color: var(--body);
+  font-size: 0.98rem;
+  line-height: 1.9;
+}
+
+.pg-story__text p:first-child {
+  color: var(--ink);
+  font-size: 1.08rem;
+}
+
+.pg-story__signature {
+  margin: 2rem 0 1.9rem;
+  padding-top: 1.4rem;
+  border-top: 1px solid var(--line);
+}
+
+.pg-story__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem 1.6rem;
+  align-items: center;
+}
+
+/* ------------------------------
+   Contact
+------------------------------ */
+
+.pg-contact {
+  padding-block: var(--section-space);
+  background: var(--paper);
+}
+
+.pg-contact__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.02fr) minmax(0, 0.98fr);
+  gap: clamp(2.5rem, 6vw, 5.5rem);
+  align-items: start;
+}
+
+.pg-contact__intro h2 {
+  max-width: 15ch;
+  margin-bottom: 1.3rem;
+}
+
+.pg-contact__intro p {
+  max-width: 50ch;
+  color: var(--body);
+  font-size: 1.02rem;
+  line-height: 1.9;
+}
+
+.pg-contact__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem 1.6rem;
+  align-items: center;
+  margin-top: 1.8rem;
+}
+
+.pg-contact__card {
+  position: relative;
+  padding: clamp(1.8rem, 3.4vw, 2.8rem);
+  overflow: hidden;
+  background: var(--forest);
+  color: rgba(255, 253, 249, 0.72);
+}
+
+.pg-contact__card::after {
+  position: absolute;
+  top: -6rem;
+  right: -5rem;
+  width: 14rem;
+  height: 14rem;
+  border: 1px solid rgba(216, 180, 163, 0.3);
+  border-radius: 50%;
+  content: "";
+}
+
+.pg-contact__card h2 {
+  max-width: 14ch;
+  margin-bottom: 1.6rem;
+  color: var(--white);
+  font-size: clamp(1.7rem, 2.6vw, 2.3rem);
+}
+
+.pg-contact__list {
+  display: grid;
+  margin-bottom: 1.8rem;
+  list-style: none;
+  border-top: 1px solid var(--line-light);
+}
+
+.pg-contact__list li {
+  display: grid;
+  grid-template-columns: minmax(7rem, 0.42fr) minmax(0, 1fr);
+  gap: 1rem;
+  padding: 0.95rem 0;
+  border-bottom: 1px solid var(--line-light);
+  font-size: 0.86rem;
+}
+
+.pg-contact__list strong {
+  color: var(--rose-soft);
+  font-family: var(--sans);
+  font-size: 0.59rem;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.pg-contact__list a {
+  color: var(--white);
+  text-decoration: none;
+}
+
+.pg-contact__list a:hover {
+  color: var(--rose-soft);
+  text-decoration: underline;
+}
+
+.pg-contact__note {
+  margin: 1rem 0 0;
+  color: rgba(255, 253, 249, 0.48);
+  font-size: 0.65rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+/* ------------------------------
+   FAQ
+------------------------------ */
+
+.pg-faq {
+  padding-block: var(--section-space-sm);
+  background: var(--cream);
+}
+
+.pg-faq__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 0.6fr) minmax(0, 1.4fr);
+  gap: clamp(2rem, 6vw, 6rem);
+  align-items: start;
+}
+
+.pg-faq__grid h2 {
+  max-width: 12ch;
+  margin-bottom: 0;
+}
+
+.pg-faq__list {
+  border-top: 1px solid var(--line);
+}
+
+.pg-faq__item {
+  display: grid;
+  grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
+  gap: clamp(1rem, 3vw, 2.5rem);
+  padding: 1.4rem 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.pg-faq__item h3 {
+  margin: 0;
+  font-size: clamp(1.1rem, 1.6vw, 1.3rem);
+  line-height: 1.35;
+}
+
+.pg-faq__item p {
+  margin: 0;
+  color: var(--body);
+  font-size: 0.9rem;
+  line-height: 1.8;
+}
+
+/* ------------------------------
+   Portfolio gallery
+------------------------------ */
+
+.pg-gallery {
+  padding-block: var(--section-space);
+  background: var(--paper);
+}
+
+.pg-gallery__head {
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+  gap: clamp(1.5rem, 5vw, 5rem);
+  align-items: end;
+  margin-bottom: clamp(2rem, 4vw, 3.4rem);
+}
+
+.pg-gallery__head h2 {
+  max-width: 16ch;
+  margin-bottom: 0;
+}
+
+.pg-gallery__head .lede {
+  max-width: 48ch;
+  margin-bottom: 0.2rem;
+}
+
+.pg-gallery .gallery-toolbar {
+  padding-bottom: 1.1rem;
+  border-bottom: 1px solid var(--line);
+}
+
+.pg-gallery .gallery-grid {
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  gap: clamp(0.7rem, 1.6vw, 1.15rem);
+  align-items: start;
+}
+
+.pg-gallery .gallery-item {
+  grid-column: span 4;
+}
+
+.pg-gallery .gallery-item:nth-child(5n + 1) {
+  grid-column: span 8;
+}
+
+.pg-gallery .gallery-item:nth-child(5n + 1) img {
+  aspect-ratio: 16 / 10;
+}
+
+.pg-gallery .gallery-item:nth-child(5n + 2) img {
+  aspect-ratio: 3 / 4;
+}
+
+.pg-gallery .gallery-item:nth-child(5n + 3) img {
+  aspect-ratio: 1 / 1;
+}
+
+.pg-gallery .gallery-item:nth-child(5n + 4) img {
+  aspect-ratio: 3 / 4;
+}
+
+.pg-gallery .gallery-item:nth-child(5n + 5) img {
+  aspect-ratio: 1 / 1;
+}
+
+.pg-gallery .gallery-item:last-child {
+  grid-column: span 12;
+}
+
+.pg-gallery .gallery-item:last-child img {
+  aspect-ratio: 21 / 9;
+}
+
+/* ------------------------------
+   Booking
+------------------------------ */
+
+.pg-booking {
+  padding-block: var(--section-space);
+  background: var(--paper);
+}
+
+.pg-booking__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+  gap: clamp(2.5rem, 6vw, 5.5rem);
+  align-items: start;
+}
+
+.pg-booking__steps {
+  border-top: 1px solid var(--line);
+}
+
+.pg-booking__step {
+  display: grid;
+  grid-template-columns: clamp(2.5rem, 4vw, 3.5rem) minmax(0, 1fr);
+  gap: clamp(1rem, 2.5vw, 2rem);
+  padding: 1.5rem 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.pg-booking__number {
+  color: rgba(146, 86, 71, 0.35);
+  font-family: var(--serif);
+  font-size: 1.7rem;
+  font-style: italic;
+  line-height: 1;
+}
+
+.pg-booking__step h3 {
+  margin-bottom: 0.4rem;
+  font-size: clamp(1.2rem, 1.7vw, 1.45rem);
+}
+
+.pg-booking__step p {
+  max-width: 52ch;
+  margin: 0;
+  color: var(--body);
+  font-size: 0.9rem;
+  line-height: 1.8;
+}
+
+.pg-booking__card {
+  position: sticky;
+  top: 7.5rem;
+  padding: clamp(1.8rem, 3.5vw, 2.8rem);
+  background: var(--forest);
+  color: rgba(255, 253, 249, 0.72);
+}
+
+.pg-booking__card h2 {
+  margin-bottom: 1rem;
+  color: var(--white);
+  font-size: clamp(1.8rem, 2.8vw, 2.5rem);
+}
+
+.pg-booking__card p {
+  font-size: 0.94rem;
+  line-height: 1.8;
+}
+
+.pg-booking__card .button {
+  margin-top: 1.4rem;
+}
+
+.pg-booking__card-note {
+  margin: 1rem 0 0;
+  color: rgba(255, 253, 249, 0.48);
+  font-size: 0.64rem;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+}
+
+.pg-booking__card .text-link {
+  margin-top: 1.4rem;
+  color: var(--rose-soft);
+}
+
+/* ------------------------------
+   Simple content pages
+------------------------------ */
+
+.pg-basic {
+  display: flex;
+  min-height: 62vh;
+  align-items: center;
+  padding-block: clamp(5rem, 12vh, 9rem);
+  background: var(--paper);
+}
+
+.pg-basic__inner {
+  max-width: 42rem;
+}
+
+.pg-basic h1 {
+  margin-bottom: 1.2rem;
+}
+
+.pg-basic__text {
+  max-width: 44ch;
+  color: var(--body);
+  font-size: 1.05rem;
+  line-height: 1.9;
+}
+
+.pg-basic__actions {
+  margin-top: 1.8rem;
+}
+
+.pg-prose {
+  padding-block: var(--section-space-sm);
+  background: var(--paper);
+}
+
+.pg-prose__inner {
+  max-width: 46rem;
+  padding-left: clamp(1.4rem, 4vw, 3rem);
+  border-left: 1px solid var(--rose-soft);
+}
+
+.pg-prose__inner p {
+  color: var(--body);
+  font-size: 1.04rem;
+  line-height: 1.95;
+}
+
+.pg-prose__inner p:first-child {
+  color: var(--ink);
+  font-family: var(--serif);
+  font-size: clamp(1.3rem, 2vw, 1.6rem);
+  line-height: 1.55;
+}
+
+/* ------------------------------
+   Responsive
+------------------------------ */
+
+@media (max-width: 1050px) {
+  .pg-booking__card {
+    position: static;
+  }
+
+  .pg-gallery .gallery-item:nth-child(5n + 1) img {
+    aspect-ratio: 3 / 2;
+  }
+}
+
+@media (max-width: 900px) {
+  .ed-hero--page {
+    min-height: 56vh;
+    padding-block: 7.5rem 3rem;
+  }
+
+  .ed-hero--page .ed-hero__inner h1 {
+    font-size: clamp(2.4rem, 7vw, 3.7rem);
+  }
+
+  .ed-reviews__head,
+  .pg-reviews-page__head,
+  .pg-gallery__head {
+    grid-template-columns: 1fr;
+    gap: 1.4rem;
+    align-items: start;
+  }
+
+  .ed-reviews__link {
+    margin-top: 0.4rem;
+    margin-bottom: 0;
+  }
+
+  .pg-city-intro__grid,
+  .pg-story__grid,
+  .pg-contact__grid,
+  .pg-faq__grid,
+  .pg-booking__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .pg-story__media,
+  .pg-city-intro__media {
+    max-width: 32rem;
+  }
+
+  .pg-faq__grid {
+    gap: 2rem;
+  }
+
+  .pg-gallery .gallery-grid {
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+  }
+
+  .pg-gallery .gallery-item {
+    grid-column: span 3;
+  }
+
+  .pg-gallery .gallery-item:nth-child(5n + 1),
+  .pg-gallery .gallery-item:nth-last-child(2),
+  .pg-gallery .gallery-item:last-child {
+    grid-column: span 6;
+  }
+
+  .pg-gallery .gallery-item:nth-child(5n + 2) img,
+  .pg-gallery .gallery-item:nth-child(5n + 3) img,
+  .pg-gallery .gallery-item:nth-child(5n + 4) img,
+  .pg-gallery .gallery-item:nth-child(5n + 5) img {
+    aspect-ratio: 3 / 4;
+  }
+
+  .pg-gallery .gallery-item:last-child img {
+    aspect-ratio: 3 / 2;
+  }
+}
+
+@media (max-width: 680px) {
+  .ed-reviews__grid,
+  .pg-reviews-page__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .pg-reviews-page__grid .review-card:nth-child(4n + 2),
+  .pg-reviews-page__grid .review-card:nth-child(4n + 3) {
+    background: var(--white);
+  }
+
+  .pg-city-intro__media,
+  .pg-story__media {
+    padding: 0 0.9rem 0.9rem 0;
+  }
+
+  .pg-city-intro__media::before,
+  .pg-story__media::before {
+    width: 68%;
+    height: 70%;
+  }
+
+  .pg-contact__list li {
+    grid-template-columns: 1fr;
+    gap: 0.15rem;
+  }
+
+  .pg-faq__item {
+    grid-template-columns: 1fr;
+    gap: 0.5rem;
+  }
+
+  .pg-gallery .gallery-grid {
+    grid-template-columns: 1fr;
+    gap: 0.8rem;
+  }
+
+  .pg-gallery .gallery-item,
+  .pg-gallery .gallery-item:nth-child(5n + 1),
+  .pg-gallery .gallery-item:last-child {
+    grid-column: 1 / -1;
+  }
+
+  .pg-gallery .gallery-item img,
+  .pg-gallery .gallery-item:nth-child(5n + 1) img,
+  .pg-gallery .gallery-item:nth-child(5n + 2) img,
+  .pg-gallery .gallery-item:nth-child(5n + 3) img,
+  .pg-gallery .gallery-item:nth-child(5n + 4) img,
+  .pg-gallery .gallery-item:nth-child(5n + 5) img,
+  .pg-gallery .gallery-item:last-child img {
+    aspect-ratio: 4 / 3;
+  }
+
+  .pg-gallery .gallery-item__caption {
+    opacity: 1;
+    transform: none;
+  }
+
+  .pg-booking__step {
+    grid-template-columns: 2.2rem 1fr;
+    gap: 0.8rem;
+  }
+
+  .pg-basic {
+    min-height: 54vh;
+  }
+
+  .pg-prose__inner {
+    padding-left: 1.2rem;
+  }
+}

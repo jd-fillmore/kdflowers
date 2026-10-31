@@ -1,0 +1,26 @@
+---
+import ReviewCard from "./ReviewCard.astro"
+import { featuredReviews } from "../data/reviews"
+---
+
+<section class="ed-reviews" id="reviews">
+  <div class="container">
+    <div class="ed-reviews__head">
+      <div data-reveal>
+        <p class="eyebrow">Kind words</p>
+        <h2>Loved by Niagara couples.</h2>
+      </div>
+      <a class="text-link ed-reviews__link" href="/reviews/" data-reveal>
+        Read all reviews
+      </a>
+    </div>
+
+    <div class="ed-reviews__grid">
+      {featuredReviews.map((review) => <ReviewCard review={review} featured />)}
+    </div>
+
+    <p class="ed-reviews__note">
+      A selection of reviews shared by KD Flowers couples.
+    </p>
+  </div>
+</section>
