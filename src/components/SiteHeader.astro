@@ -1,0 +1,159 @@
+---
+import { Image } from "astro:assets"
+import logo from "../assets/images/logo.png"
+import { navigation, site } from "../data/site"
+
+const pathname = Astro.url.pathname
+
+function isActive(href: string) {
+  if (href === "/") return pathname === "/"
+  return pathname.startsWith(href)
+}
+---
+
+<header
+  class:list={[
+    "site-header",
+    { "site-header--overlay": Astro.props.variant === "overlay" },
+  ]}
+>
+  <div class="container header-inner">
+    <a class="brand" href="/" aria-label="KD Flowers home">
+      <Image
+        class="brand__logo"
+        src={logo}
+        alt="cheap bridal bouqets niagara"
+        width={46}
+        height={55}
+        loading="eager"
+      />
+      <span class="brand__text">
+        <span class="brand__name">KD Flowers</span>
+        <span class="brand__place">Niagara wedding florist</span>
+      </span>
+    </a>
+
+    <button
+      class="nav-toggle"
+      type="button"
+      aria-expanded="false"
+      aria-controls="site-navigation"
+      data-nav-toggle
+    >
+      <span class="nav-toggle-icon" aria-hidden="true">
+        <span></span>
+        <span></span>
+        <span></span>
+      </span>
+      <span data-nav-label>Menu</span>
+    </button>
+
+    <nav
+      class="site-nav"
+      id="site-navigation"
+      aria-label="Main navigation"
+      data-site-nav
+    >
+      <ul>
+        {
+          navigation.map((item) => (
+            <li>
+              <a
+                href={item.href}
+                aria-current={isActive(item.href) ? "page" : undefined}
+              >
+                {item.label}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+
+      <a
+        class="button button--solid button--small"
+        href={site.booking}
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Book a consult
+        <span class="sr-only"> (opens in a new tab)</span>
+      </a>
+
+      <div class="nav-meta">
+        <p class="nav-meta__place">Niagara &amp; St. Catharines, Ontario</p>
+        <a
+          href={site.instagram}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          @kdflowersniagara
+          <span class="sr-only"> on Instagram (opens in a new tab)</span>
+        </a>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<script>
+  const toggle = document.querySelector<HTMLButtonElement>("[data-nav-toggle]")
+  const nav = document.querySelector<HTMLElement>("[data-site-nav]")
+  const label = toggle?.querySelector<HTMLElement>("[data-nav-label]")
+  const mobileQuery = window.matchMedia("(max-width: 900px)")
+
+  function closeMenu(restoreFocus = true) {
+    if (!toggle || !nav) return
+    toggle.setAttribute("aria-expanded", "false")
+    nav.classList.remove("is-open")
+    document.body.classList.remove("menu-open")
+    if (label) label.textContent = "Menu"
+    if (restoreFocus) toggle.focus()
+  }
+
+  function openMenu() {
+    if (!toggle || !nav) return
+    toggle.setAttribute("aria-expanded", "true")
+    nav.classList.add("is-open")
+    document.body.classList.add("menu-open")
+    if (label) label.textContent = "Close"
+    nav.querySelector<HTMLElement>("a")?.focus()
+  }
+
+  if (toggle && nav) {
+    toggle.addEventListener("click", () => {
+      const isOpen = toggle.getAttribute("aria-expanded") === "true"
+      isOpen ? closeMenu() : openMenu()
+    })
+
+    nav.querySelectorAll("a").forEach((link) => {
+      link.addEventListener("click", () => closeMenu(false))
+    })
+
+    document.addEventListener("keydown", (event) => {
+      const isOpen = toggle.getAttribute("aria-expanded") === "true"
+      if (!isOpen) return
+
+      if (event.key === "Escape") {
+        closeMenu()
+        return
+      }
+
+      if (event.key !== "Tab" || !mobileQuery.matches) return
+
+      const focusable = [toggle, ...nav.querySelectorAll<HTMLElement>("a")]
+      const first = focusable[0]
+      const last = focusable[focusable.length - 1]
+
+      if (event.shiftKey && document.activeElement === first) {
+        event.preventDefault()
+        last.focus()
+      } else if (!event.shiftKey && document.activeElement === last) {
+        event.preventDefault()
+        first.focus()
+      }
+    })
+
+    mobileQuery.addEventListener("change", (event) => {
+      if (!event.matches) closeMenu(false)
+    })
+  }
+</script>

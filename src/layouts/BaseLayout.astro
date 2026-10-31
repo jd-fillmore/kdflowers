@@ -1,0 +1,140 @@
+---
+import Seo from "../components/Seo.astro"
+import SiteHeader from "../components/SiteHeader.astro"
+import SiteFooter from "../components/SiteFooter.astro"
+import Breadcrumbs from "../components/Breadcrumbs.astro"
+import type { BreadcrumbItem } from "../lib/schema"
+import { breadcrumbSchema, canonicalUrl, webPageSchema } from "../lib/schema"
+import { site } from "../data/site"
+import "../styles/global.css"
+import "../styles/home.css"
+import "../styles/pages.css"
+
+type Props = {
+  title: string
+  description?: string
+  path: string
+  canonicalPath?: string
+  image?: string
+  type?: "website" | "article"
+  noindex?: boolean
+  jsonLd?: object | object[]
+  breadcrumbs?: BreadcrumbItem[]
+  headerVariant?: "solid" | "overlay"
+  pageType?: "WebPage" | "AboutPage" | "ContactPage" | "CollectionPage"
+  bodyClass?: string
+}
+
+const {
+  title,
+  description = site.description,
+  path,
+  canonicalPath,
+  image,
+  type = "website",
+  noindex = false,
+  jsonLd,
+  breadcrumbs,
+  headerVariant = "solid",
+  pageType = "WebPage",
+  bodyClass = "",
+} = Astro.props
+
+const canonical = canonicalUrl(canonicalPath ?? path)
+const schemas: object[] = [
+  ...(jsonLd ? (Array.isArray(jsonLd) ? jsonLd : [jsonLd]) : []),
+  webPageSchema({
+    url: canonical,
+    title: `${title} | ${site.title}`,
+    description,
+    type: pageType,
+  }),
+]
+
+if (breadcrumbs && breadcrumbs.length > 1) {
+  schemas.push(breadcrumbSchema(canonical, breadcrumbs))
+}
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <meta name="theme-color" content="#f9f5ee" />
+    <link rel="icon" href="/favicon.png" type="image/png" />
+    <link rel="apple-touch-icon" href="/logo.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Jost:wght@300;400;500&display=swap"
+    />
+    <script is:inline>
+      document.documentElement.classList.add("has-js")
+    </script>
+    <noscript>
+      <style>
+        [data-reveal] {
+          opacity: 1 !important;
+          transform: none !important;
+        }
+      </style>
+    </noscript>
+    <Seo
+      title={title}
+      description={description}
+      path={path}
+      canonicalPath={canonicalPath}
+      image={image}
+      type={type}
+      noindex={noindex}
+      jsonLd={schemas}
+    />
+  </head>
+  <body class={bodyClass}>
+    <a class="skip-link" href="#main-content">Skip to content</a>
+    <SiteHeader variant={headerVariant} />
+    {
+      breadcrumbs && breadcrumbs.length > 1 && (
+        <Breadcrumbs items={breadcrumbs} />
+      )
+    }
+    <main id="main-content" tabindex="-1">
+      <slot />
+    </main>
+    <SiteFooter />
+    <script>
+      const revealItems =
+        document.querySelectorAll<HTMLElement>("[data-reveal]")
+      const prefersReducedMotion = window.matchMedia(
+        "(prefers-reduced-motion: reduce)"
+      ).matches
+
+      if (
+        revealItems.length > 0 &&
+        !prefersReducedMotion &&
+        "IntersectionObserver" in window
+      ) {
+        const observer = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                entry.target.classList.add("is-visible")
+                observer.unobserve(entry.target)
+              }
+            })
+          },
+          { rootMargin: "0px 0px -8% 0px", threshold: 0.08 }
+        )
+
+        revealItems.forEach((item) => observer.observe(item))
+      } else {
+        revealItems.forEach((item) => item.classList.add("is-visible"))
+      }
+    </script>
+  </body>
+</html>

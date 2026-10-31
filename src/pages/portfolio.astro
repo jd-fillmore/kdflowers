@@ -1,0 +1,66 @@
+---
+import { getImage } from "astro:assets"
+import BaseLayout from "../layouts/BaseLayout.astro"
+import PageHero from "../components/PageHero.astro"
+import Gallery from "../components/Gallery.astro"
+import HomeCta from "../components/HomeCta.astro"
+import portfolioHeroImage from "../assets/images/1.jpg"
+import { galleryImages } from "../data/gallery"
+import { canonicalUrl, imageGallerySchema } from "../lib/schema"
+
+const breadcrumbs = [{ label: "Home", href: "/" }, { label: "Portfolio" }]
+
+const schemaImages = await Promise.all(
+  galleryImages.map(async (image) => {
+    const optimized = await getImage({
+      src: image.src,
+      width: 1600,
+      format: "webp",
+      quality: 86,
+    })
+    return {
+      contentUrl: optimized.src,
+      caption: image.caption,
+    }
+  })
+)
+---
+
+<BaseLayout
+  title="Portfolio"
+  path="/portfolio/"
+  breadcrumbs={breadcrumbs}
+  pageType="CollectionPage"
+  jsonLd={imageGallerySchema(canonicalUrl("/portfolio/"), schemaImages)}
+>
+  <PageHero
+    title="Portfolio"
+    eyebrow="Selected wedding work"
+    intro="A collection of bridal bouquets, boutonnières and wedding-day flowers designed for real celebrations across Niagara."
+    image={portfolioHeroImage}
+    imageAlt="Bridesmaids in pastel dresses holding soft green and white bouquets"
+    notes={["Bridal bouquets", "Wedding party flowers", "Ceremony & reception"]}
+    secondaryLabel="Book a free consultation"
+    secondaryHref="/book-consult/"
+  />
+
+  <section class="pg-gallery">
+    <div class="container">
+      <div class="pg-gallery__head">
+        <div data-reveal>
+          <p class="eyebrow">Wedding flowers</p>
+          <h2>A portfolio of Niagara wedding flowers</h2>
+        </div>
+        <div data-reveal>
+          <p class="lede">
+            Bridal bouquets, boutonnières and wedding-day flowers designed by KD
+            Flowers. Select any photograph to view it larger.
+          </p>
+          <a class="text-link" href="/reviews/">Read client reviews</a>
+        </div>
+      </div>
+      <Gallery />
+    </div>
+  </section>
+  <HomeCta />
+</BaseLayout>

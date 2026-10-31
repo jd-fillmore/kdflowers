@@ -1,0 +1,136 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro"
+import PageHero from "../components/PageHero.astro"
+import HomeCta from "../components/HomeCta.astro"
+import contactHeroImage from "../assets/images/9.jpg"
+import { faqs, site } from "../data/site"
+
+const breadcrumbs = [{ label: "Home", href: "/" }, { label: "Contact" }]
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: faqs.map((faq) => ({
+    "@type": "Question",
+    name: faq.question,
+    acceptedAnswer: {
+      "@type": "Answer",
+      text: faq.answer,
+    },
+  })),
+}
+---
+
+<BaseLayout
+  title="Contact"
+  description="Contact KD Flowers to book a free wedding flower consultation for Niagara and St. Catharines. View the portfolio and follow KD Flowers on Instagram."
+  path="/contact/"
+  breadcrumbs={breadcrumbs}
+  pageType="ContactPage"
+  jsonLd={faqSchema}
+>
+  <PageHero
+    title="Contact KD Flowers"
+    eyebrow="Let’s talk flowers"
+    intro="Tell Kylee about your wedding day, your colours and the flowers you love. The first conversation is free, and there is no obligation."
+    image={contactHeroImage}
+    imageAlt="Bride and groom at a stone doorway with a white and pink bouquet"
+    notes={[
+      "Free consultation",
+      "Booked in advance",
+      "Niagara & St. Catharines",
+    ]}
+    secondaryLabel="View the portfolio"
+    secondaryHref="/portfolio/"
+  />
+
+  <section class="pg-contact">
+    <div class="container pg-contact__grid">
+      <div class="pg-contact__intro" data-reveal>
+        <p class="eyebrow">Plan your flowers</p>
+        <h2>Plan your wedding flowers with Kylee</h2>
+        <p>
+          KD Flowers creates personalized wedding flowers and bridal bouquets
+          for couples across Niagara and St. Catharines. Book a free
+          consultation to talk through your colours, flowers, style and vision
+          for the day.
+        </p>
+        <p>
+          Consultations can be booked online. If you would like to see more work
+          first, the portfolio and Instagram are the best places to start.
+        </p>
+        <div class="pg-contact__actions">
+          <a class="text-link" href="/portfolio/">View the portfolio</a>
+          <a
+            class="text-link"
+            href={site.instagram}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Follow on Instagram
+            <span class="sr-only"> (opens in a new tab)</span>
+          </a>
+        </div>
+      </div>
+
+      <div class="pg-contact__card" data-reveal>
+        <h2>Book a free consultation</h2>
+        <ul class="pg-contact__list">
+          <li>
+            <strong>Booking</strong>
+            <a href={site.booking} target="_blank" rel="noopener noreferrer">
+              Book online through Calendly
+              <span class="sr-only"> (opens in a new tab)</span>
+            </a>
+          </li>
+          <li>
+            <strong>Instagram</strong>
+            <a href={site.instagram} target="_blank" rel="noopener noreferrer">
+              @kdflowersniagara
+              <span class="sr-only"> (opens in a new tab)</span>
+            </a>
+          </li>
+          <li>
+            <strong>Service area</strong>
+            <span>Niagara &amp; St. Catharines, Ontario</span>
+          </li>
+          <li>
+            <strong>Consultation</strong>
+            <span>Free, booked in advance</span>
+          </li>
+        </ul>
+        <a
+          class="button button--cream"
+          href={site.booking}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Book A Consult
+          <span class="sr-only"> (opens in a new tab)</span>
+        </a>
+        <p class="pg-contact__note">No obligation · Consultation is free</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="pg-faq">
+    <div class="container pg-faq__grid">
+      <div data-reveal>
+        <p class="eyebrow">Questions</p>
+        <h2>Frequently asked questions</h2>
+      </div>
+      <div class="pg-faq__list">
+        {
+          faqs.map((faq) => (
+            <article class="pg-faq__item">
+              <h3>{faq.question}</h3>
+              <p>{faq.answer}</p>
+            </article>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <HomeCta />
+</BaseLayout>

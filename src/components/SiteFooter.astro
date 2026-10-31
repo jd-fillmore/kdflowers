@@ -1,0 +1,114 @@
+---
+import { Image } from "astro:assets"
+import logo from "../assets/images/logo.png"
+import {
+  navigation,
+  serviceAreas,
+  site,
+} from "../data/site"
+
+const year = new Date().getFullYear()
+---
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a class="footer-brand__link" href="/" aria-label="KD Flowers home">
+          <Image
+            src={logo}
+            alt="cheap bridal bouqets niagara"
+            width={52}
+            height={62}
+            loading="lazy"
+          />
+          <span>
+            <span class="footer-brand__name">KD Flowers</span>
+            <span class="footer-brand__place">Niagara wedding florist</span>
+          </span>
+        </a>
+        <p>
+          Wedding flowers and bridal bouquets for Niagara &amp; St. Catharines,
+          designed personally by Kylee Danielle.
+        </p>
+        <p class="footer-brand__location">Niagara Region, Ontario</p>
+        <a
+          class="footer-social"
+          href={site.instagram}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Follow on Instagram
+          <span class="sr-only"> (opens in a new tab)</span>
+        </a>
+      </div>
+
+      <nav class="footer-col" aria-label="Footer navigation">
+        <h2>Explore</h2>
+        <ul class="footer-links">
+          {
+            navigation.map((item) => (
+              <li>
+                <a href={item.href}>{item.label}</a>
+              </li>
+            ))
+          }
+          <li>
+            <a
+              href={site.booking}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Book a consult
+              <span class="sr-only"> (opens in a new tab)</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+
+      <div class="footer-col">
+        <h2>Areas served</h2>
+        <ul class="footer-areas">
+          {
+            serviceAreas.map((area) => (
+              <li>
+                <a href={`/wedding-flowers-${area.slug}/`}>{area.navLabel}</a>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+
+      <div class="footer-col footer-cta">
+        <h2>Inquire</h2>
+        <p>
+          Book a free consultation to talk through your wedding flowers,
+          colours and vision.
+        </p>
+        <a
+          class="button button--light button--small"
+          href={site.booking}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Book a consult
+          <span class="sr-only"> (opens in a new tab)</span>
+        </a>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>&copy; {year} KD Flowers. All rights reserved.</p>
+      <p>
+        Website by
+        <a
+          href="https://infused.agency"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Infused Agency
+        </a>
+      </p>
+    </div>
+  </div>
+</footer>

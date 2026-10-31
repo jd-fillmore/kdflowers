@@ -1,0 +1,71 @@
+---
+import { Image } from "astro:assets"
+import whyImage from "../assets/images/5.jpg"
+import { site } from "../data/site"
+
+type Item = {
+  title: string
+  text: string
+}
+
+type Props = {
+  eyebrow: string
+  title: string
+  items: readonly Item[]
+}
+
+const { eyebrow, title, items } = Astro.props
+---
+
+<section class="section ed-why" id="why-kd-flowers">
+  <div class="container ed-why__grid">
+    <figure class="ed-why__media" data-reveal>
+      <Image
+        src={whyImage}
+        alt="Bridesmaids in emerald dresses holding white bouquets alongside the bride"
+        width={1000}
+        height={600}
+        widths={[420, 640, 860]}
+        sizes="(max-width: 1050px) 100vw, 38vw"
+        format="webp"
+        quality={84}
+        loading="lazy"
+        style="object-position: center 30%"
+      />
+      <figcaption>Wedding party, Niagara</figcaption>
+    </figure>
+
+    <div class="ed-why__body" data-reveal>
+      <p class="eyebrow eyebrow--light">{eyebrow}</p>
+      <h2>{title}</h2>
+      <p class="ed-why__statement">
+        Every wedding is designed by Kylee personally, from the first
+        conversation to the final delivery.
+      </p>
+
+      <ul class="ed-why__list">
+        {
+          items.map((item, index) => (
+            <li class="ed-why__item">
+              <span class="ed-why__number" aria-hidden="true">
+                {String(index + 1).padStart(2, "0")}
+              </span>
+              <h3>{item.title}</h3>
+              <p>{item.text}</p>
+            </li>
+          ))
+        }
+      </ul>
+
+      <a
+        class="button button--light"
+        href={site.booking}
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Book a free consultation
+        <span class="sr-only"> (opens in a new tab)</span>
+      </a>
+    </div>
+  </div>
+</section>

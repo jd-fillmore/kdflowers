@@ -1,0 +1,5 @@
+# KD Flowers robots.txt
+User-agent: *
+Allow: /
+
+Sitemap: https://www.kdflowers.ca/sitemap.xml

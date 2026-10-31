@@ -1,0 +1,127 @@
+---
+import { Image } from "astro:assets"
+import SectionHeading from "./SectionHeading.astro"
+import { galleryImages } from "../data/gallery"
+
+const main = {
+  ...galleryImages[15],
+  alt: "Bride and groom at a stone doorway with a white and pink bridal bouquet",
+  caption: "Bride and groom at a stone doorway",
+}
+const portrait = {
+  ...galleryImages[14],
+  alt: "Blush and cream bridal bouquet on a lace wedding dress",
+  caption: "Blush bridal bouquet on lace",
+}
+const square = {
+  ...galleryImages[0],
+  alt: "Burgundy, blush and ivory wedding bouquet with mixed greenery",
+  caption: "Burgundy, blush and ivory wedding bouquet",
+}
+const wide = {
+  ...galleryImages[10],
+  alt: "Bride and groom walking through a garden with a colourful bridal bouquet",
+  caption: "Bride and groom in a garden",
+}
+---
+
+<section class="section ed-collage" id="featured-work">
+  <div class="container">
+    <div class="ed-collage__head">
+      <SectionHeading
+        eyebrow="Selected weddings"
+        title="Real Niagara Weddings & Wedding Flower Designs"
+        text="A glimpse of the beautiful weddings and floral designs we've been part of across Niagara."
+      />
+      <a class="text-link ed-collage__link" href="/portfolio/">
+        View the full portfolio
+      </a>
+    </div>
+
+    <div class="ed-collage__grid" data-reveal>
+      <figure class="ed-collage__item--main">
+        <a
+          href="/portfolio/"
+          aria-label={`View the wedding portfolio: ${main.caption}`}
+        >
+          <Image
+            src={main.src}
+            alt={main.alt}
+            width={1000}
+            height={600}
+            widths={[640, 900, 1200]}
+            sizes="(max-width: 680px) 100vw, 58vw"
+            format="webp"
+            quality={84}
+            loading="lazy"
+          />
+        </a>
+        <figcaption data-number="I">{main.caption}</figcaption>
+      </figure>
+
+      <figure class="ed-collage__item--portrait">
+        <a
+          href="/portfolio/"
+          aria-label={`View the wedding portfolio: ${portrait.caption}`}
+        >
+          <Image
+            src={portrait.src}
+            alt={portrait.alt}
+            width={1000}
+            height={600}
+            widths={[420, 640, 840]}
+            sizes="(max-width: 680px) 100vw, 40vw"
+            format="webp"
+            quality={84}
+            loading="lazy"
+          />
+        </a>
+        <figcaption data-number="II">{portrait.caption}</figcaption>
+      </figure>
+
+      <figure class="ed-collage__item--square">
+        <a
+          href="/portfolio/"
+          aria-label={`View the wedding portfolio: ${square.caption}`}
+        >
+          <Image
+            src={square.src}
+            alt={square.alt}
+            width={1000}
+            height={600}
+            widths={[360, 540, 760]}
+            sizes="(max-width: 680px) 100vw, 38vw"
+            format="webp"
+            quality={84}
+            loading="lazy"
+          />
+        </a>
+        <figcaption data-number="III">{square.caption}</figcaption>
+      </figure>
+
+      <figure class="ed-collage__item--wide">
+        <a
+          href="/portfolio/"
+          aria-label={`View the wedding portfolio: ${wide.caption}`}
+        >
+          <Image
+            src={wide.src}
+            alt={wide.alt}
+            width={1000}
+            height={600}
+            widths={[520, 760, 1000]}
+            sizes="(max-width: 680px) 100vw, 55vw"
+            format="webp"
+            quality={84}
+            loading="lazy"
+          />
+        </a>
+        <figcaption data-number="IV">{wide.caption}</figcaption>
+      </figure>
+    </div>
+
+    <p class="ed-collage__note" data-reveal>
+      <a href="/portfolio/">Eighteen more real weddings in the portfolio</a>
+    </p>
+  </div>
+</section>

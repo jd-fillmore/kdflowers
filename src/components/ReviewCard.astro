@@ -1,0 +1,32 @@
+---
+import ReviewStars from "./ReviewStars.astro"
+import type { Review } from "../data/reviews"
+
+type Props = {
+  review: Review
+  featured?: boolean
+}
+
+const { review, featured = false } = Astro.props
+const text = featured && review.excerpt ? review.excerpt : review.text
+const paragraphs = text.split(/\n{2,}/).filter(Boolean)
+---
+
+<article class:list={["review-card", { "review-card--featured": featured }]}>
+  <div class="review-card__top">
+    <ReviewStars rating={review.rating} />
+    {
+      (featured && review.excerpt) || review.truncated ? (
+        <span class="review-card__note">
+          {review.truncated ? "Review excerpt" : "Excerpt"}
+        </span>
+      ) : null
+    }
+  </div>
+
+  <blockquote class="review-card__quote">
+    {paragraphs.map((paragraph) => <p>{paragraph}</p>)}
+  </blockquote>
+
+  <p class="review-card__author">{review.name}</p>
+</article>

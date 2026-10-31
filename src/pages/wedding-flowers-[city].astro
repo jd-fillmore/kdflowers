@@ -1,0 +1,87 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro"
+import PageHero from "../components/PageHero.astro"
+import IntroSection from "../components/IntroSection.astro"
+import ServicePreview from "../components/ServicePreview.astro"
+import AboutSection from "../components/AboutSection.astro"
+import HomeProcess from "../components/HomeProcess.astro"
+import ReviewsSection from "../components/ReviewsSection.astro"
+import HomeCta from "../components/HomeCta.astro"
+import {
+  getCityContent,
+  home,
+  serviceAreas,
+  type ServiceArea,
+} from "../data/site"
+import { floristSchema } from "../lib/schema"
+
+export function getStaticPaths() {
+  return serviceAreas.map((area) => ({
+    params: { city: area.slug },
+    props: { area },
+  }))
+}
+
+const { area } = Astro.props as { area: ServiceArea }
+const content = getCityContent(area)
+const path = `/wedding-flowers-${area.slug}/`
+const breadcrumbs = [
+  { label: "Home", href: "/" },
+  { label: `Wedding Flowers in ${area.name}` },
+]
+---
+
+<BaseLayout
+  title={content.seoTitle}
+  path={path}
+  breadcrumbs={breadcrumbs}
+  jsonLd={floristSchema()}
+>
+  <PageHero
+    title={content.heroTitle}
+    eyebrow={`${area.name} wedding florist`}
+    intro={content.heroSubtitle}
+    notes={[
+      "Affordable bridal bouquets",
+      "Designed personally by Kylee",
+      "Niagara & St. Catharines",
+    ]}
+    secondaryLabel="View the portfolio"
+    secondaryHref="/portfolio/"
+  />
+
+  <IntroSection
+    title={content.introTitle}
+    text={content.introText}
+    imgAlt={content.introAlt}
+  />
+
+  <ServicePreview
+    eyebrow={home.services.eyebrow}
+    title={home.services.title}
+    intro={home.services.intro}
+    items={home.services.items}
+  />
+
+  <AboutSection
+    title={content.aboutTitle}
+    subtitle={content.aboutSubtitle}
+    imgAlt={content.aboutAlt}
+  />
+
+  <HomeProcess
+    mainTitle={content.process.mainTitle}
+    mainSubtitle={content.process.mainSubtitle}
+    steps={content.process.steps}
+  />
+
+  <ReviewsSection
+    eyebrow="Kind words"
+    title={`Loved by ${area.name} couples.`}
+    intro="Real reviews from couples who chose KD Flowers for their wedding flowers."
+    limit={3}
+    compact
+  />
+
+  <HomeCta />
+</BaseLayout>

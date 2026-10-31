@@ -1,0 +1,60 @@
+---
+import { Image } from "astro:assets"
+import aboutImage from "../assets/images/cheap-bridal-bouquets-niagara.jpg"
+import { aboutCopy, site } from "../data/site"
+
+type Props = {
+  title: string
+  subtitle: string
+  imgAlt: string
+}
+
+const { title, subtitle, imgAlt } = Astro.props
+---
+
+<section class="pg-story" id="about">
+  <div class="container pg-story__grid">
+    <figure class="pg-story__media" data-reveal>
+      <Image
+        src={aboutImage}
+        alt={imgAlt}
+        width={539}
+        height={674}
+        widths={[400, 539, 760]}
+        sizes="(max-width: 900px) 100vw, 38vw"
+        format="webp"
+        quality={84}
+        loading="lazy"
+      />
+      <figcaption class="pg-story__caption">
+        Kylee Danielle, owner of KD Flowers
+      </figcaption>
+    </figure>
+
+    <div class="pg-story__copy" data-reveal>
+      <p class="eyebrow">{subtitle}</p>
+      <h2>{title}</h2>
+      <div class="pg-story__text">
+        {aboutCopy.map((paragraph) => <p>{paragraph}</p>)}
+      </div>
+
+      <div class="pg-story__signature">
+        <p class="signature">Kylee Danielle</p>
+        <p class="signature__role">Founder &amp; floral designer</p>
+      </div>
+
+      <div class="pg-story__actions">
+        <a
+          class="button button--solid"
+          href={site.booking}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Book a consult
+          <span class="sr-only"> (opens in a new tab)</span>
+        </a>
+        <a class="text-link" href="/portfolio/">View the portfolio</a>
+      </div>
+    </div>
+  </div>
+</section>

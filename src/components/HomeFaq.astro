@@ -1,0 +1,34 @@
+---
+import SectionHeading from "./SectionHeading.astro"
+import { homeFaqs } from "../data/site"
+
+type Faq = {
+  question: string
+  answer: string
+}
+
+type Props = {
+  faqs?: readonly Faq[]
+}
+
+const { faqs = homeFaqs } = Astro.props
+---
+
+<section class="section ed-faq" id="faq">
+  <div class="container">
+    <SectionHeading
+      eyebrow="Frequently Asked Questions"
+      title="Wedding Florist FAQs"
+    />
+    <div class="faq-list" data-reveal>
+      {
+        faqs.map((faq) => (
+          <article class="faq-item">
+            <h3>{faq.question}</h3>
+            <p>{faq.answer}</p>
+          </article>
+        ))
+      }
+    </div>
+  </div>
+</section>

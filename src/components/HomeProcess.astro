@@ -1,0 +1,52 @@
+---
+import { site } from "../data/site"
+
+type Step = {
+  title: string
+  text: string
+}
+
+type Props = {
+  mainTitle: string
+  mainSubtitle: string
+  steps: readonly Step[]
+}
+
+const { mainTitle, mainSubtitle, steps } = Astro.props
+---
+
+<section class="section ed-process" id="process">
+  <div class="container ed-process__grid">
+    <aside class="ed-process__aside" data-reveal>
+      <p class="eyebrow">The experience</p>
+      <h2>{mainTitle}</h2>
+      <p class="lede ed-process__subtitle">{mainSubtitle}</p>
+      <a
+        class="button button--solid"
+        href={site.booking}
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Start with a free consult
+        <span class="sr-only"> (opens in a new tab)</span>
+      </a>
+      <p class="ed-process__aside-note">No obligation · Consultation is free</p>
+    </aside>
+
+    <ol class="ed-process__list" data-reveal>
+      {
+        steps.map((step, index) => (
+          <li class="ed-process__step">
+            <span class="ed-process__number" aria-hidden="true">
+              {String(index + 1).padStart(2, "0")}
+            </span>
+            <div>
+              <h3>{step.title}</h3>
+              <p>{step.text}</p>
+            </div>
+          </li>
+        ))
+      }
+    </ol>
+  </div>
+</section>

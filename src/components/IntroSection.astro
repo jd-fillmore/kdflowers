@@ -1,0 +1,56 @@
+---
+import { Image } from "astro:assets"
+import introImage from "../assets/images/affordable-wedding-flowers-niagara.jpg"
+
+type Props = {
+  title: string
+  text: string
+  imgAlt: string
+  eyebrow?: string
+  ctaLabel?: string
+  ctaHref?: string
+}
+
+const {
+  title,
+  text,
+  imgAlt,
+  eyebrow = "The studio",
+  ctaLabel = "View the portfolio",
+  ctaHref = "/portfolio/",
+} = Astro.props
+---
+
+<section class="pg-city-intro" id="intro">
+  <div class="container pg-city-intro__grid">
+    <div class="pg-city-intro__copy" data-reveal>
+      <p class="eyebrow">{eyebrow}</p>
+      <h2>{title}</h2>
+      <p class="pg-city-intro__text">{text}</p>
+
+      <div class="pg-city-intro__signature">
+        <p class="signature">Kylee Danielle</p>
+        <p class="signature__role">Founder &amp; floral designer</p>
+      </div>
+
+      <a class="text-link" href={ctaHref}>{ctaLabel}</a>
+    </div>
+
+    <figure class="pg-city-intro__media" data-reveal>
+      <Image
+        src={introImage}
+        alt={imgAlt}
+        width={539}
+        height={674}
+        widths={[360, 539, 720]}
+        sizes="(max-width: 900px) 100vw, 42vw"
+        format="webp"
+        quality={84}
+        loading="lazy"
+      />
+      <figcaption class="pg-city-intro__caption">
+        Niagara &amp; St. Catharines, Ontario
+      </figcaption>
+    </figure>
+  </div>
+</section>

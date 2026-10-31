@@ -1,0 +1,183 @@
+---
+import { Image, getImage } from "astro:assets"
+import { galleryImages } from "../data/gallery"
+import { site } from "../data/site"
+
+const fullImages = await Promise.all(
+  galleryImages.map(async (image) => {
+    const optimized = await getImage({
+      src: image.src,
+      width: 1600,
+      format: "webp",
+      quality: 86,
+    })
+    return {
+      src: optimized.src,
+      width: optimized.attributes.width,
+      height: optimized.attributes.height,
+      alt: image.alt,
+      caption: image.caption,
+    }
+  })
+)
+---
+
+<div class="gallery-toolbar">
+  <p>{galleryImages.length} photographs from KD Flowers weddings.</p>
+  <a
+    class="button button--small"
+    href={site.instagram}
+    target="_blank"
+    rel="noopener noreferrer"
+  >
+    View More Photos
+    <span class="sr-only"> on Instagram (opens in a new tab)</span>
+  </a>
+</div>
+
+<div class="gallery-grid" data-gallery>
+  {
+    galleryImages.map((image, index) => (
+      <figure class="gallery-item">
+        <a
+          href={fullImages[index].src}
+          data-lightbox
+          data-index={index}
+          data-full={fullImages[index].src}
+          data-alt={image.alt}
+          data-caption={image.caption}
+          aria-label={`View larger image: ${image.alt}`}
+        >
+          <Image
+            src={image.src}
+            alt={image.alt}
+            width={600}
+            height={400}
+            widths={[320, 480, 600, 900]}
+            sizes="(max-width: 680px) 100vw, (max-width: 1050px) 50vw, 33vw"
+            format="webp"
+            quality={80}
+            loading="lazy"
+          />
+          <span class="gallery-item__caption" aria-hidden="true">
+            {image.caption}
+          </span>
+        </a>
+      </figure>
+    ))
+  }
+</div>
+
+<dialog
+  class="gallery-dialog"
+  data-gallery-dialog
+  aria-label="Wedding portfolio image viewer"
+>
+  <div class="gallery-dialog__stage">
+    <button
+      class="gallery-dialog__close"
+      type="button"
+      data-gallery-close
+      aria-label="Close image viewer"
+    >
+      &times;
+    </button>
+    <button
+      class="gallery-dialog__nav gallery-dialog__nav--prev"
+      type="button"
+      data-gallery-prev
+      aria-label="Previous image"
+    >
+      &#8249;
+    </button>
+    <img class="gallery-dialog__image" data-gallery-image src="" alt="" />
+    <button
+      class="gallery-dialog__nav gallery-dialog__nav--next"
+      type="button"
+      data-gallery-next
+      aria-label="Next image"
+    >
+      &#8250;
+    </button>
+  </div>
+  <div class="gallery-dialog__footer">
+    <p data-gallery-caption></p>
+    <p data-gallery-counter aria-live="polite"></p>
+  </div>
+</dialog>
+
+<script>
+  const dialog = document.querySelector<HTMLDialogElement>(
+    "[data-gallery-dialog]"
+  )
+  const image = document.querySelector<HTMLImageElement>("[data-gallery-image]")
+  const caption = document.querySelector<HTMLElement>("[data-gallery-caption]")
+  const counter = document.querySelector<HTMLElement>("[data-gallery-counter]")
+  const triggers = Array.from(
+    document.querySelectorAll<HTMLAnchorElement>("[data-lightbox]")
+  )
+
+  if (dialog && image && caption && counter && triggers.length > 0) {
+    const slides = triggers.map((trigger) => ({
+      src: trigger.dataset.full ?? trigger.href,
+      alt: trigger.dataset.alt ?? "",
+      caption: trigger.dataset.caption ?? "",
+    }))
+    let current = 0
+
+    function render(index: number) {
+      current = (index + slides.length) % slides.length
+      const slide = slides[current]
+      image!.src = slide.src
+      image!.alt = slide.alt
+      caption!.textContent = slide.caption
+      counter!.textContent = `${current + 1} / ${slides.length}`
+    }
+
+    function open(index: number) {
+      render(index)
+      dialog!.showModal()
+      document.body.style.overflow = "hidden"
+    }
+
+    function close() {
+      dialog!.close()
+    }
+
+    triggers.forEach((trigger, index) => {
+      trigger.addEventListener("click", (event) => {
+        event.preventDefault()
+        open(index)
+      })
+    })
+
+    document
+      .querySelector("[data-gallery-close]")
+      ?.addEventListener("click", close)
+    document
+      .querySelector("[data-gallery-prev]")
+      ?.addEventListener("click", () => render(current - 1))
+    document
+      .querySelector("[data-gallery-next]")
+      ?.addEventListener("click", () => render(current + 1))
+
+    dialog.addEventListener("close", () => {
+      document.body.style.overflow = ""
+    })
+
+    dialog.addEventListener("keydown", (event) => {
+      if (event.key === "ArrowLeft") {
+        event.preventDefault()
+        render(current - 1)
+      }
+      if (event.key === "ArrowRight") {
+        event.preventDefault()
+        render(current + 1)
+      }
+    })
+
+    dialog.addEventListener("click", (event) => {
+      if (event.target === dialog) close()
+    })
+  }
+</script>

@@ -1,0 +1,56 @@
+---
+import { Image } from "astro:assets"
+import heroImage from "../assets/images/hero.jpg"
+import { home, site } from "../data/site"
+
+const { heroEyebrow, heroTitle, heroTitleLead, heroTitleAccent, heroSubtitle } =
+  home
+---
+
+<section class="ed-hero" aria-labelledby="home-hero-title">
+  <div class="ed-hero__media">
+    <Image
+      src={heroImage}
+      alt="Blush, ivory and greenery wedding bouquets held by a bridal party"
+      width={1920}
+      height={600}
+      widths={[768, 1280, 1920]}
+      sizes="100vw"
+      format="webp"
+      quality={80}
+      loading="eager"
+      fetchpriority="high"
+      data-reveal="image"
+    />
+  </div>
+
+  <div class="container ed-hero__inner">
+    <div class="ed-hero__content">
+      <p class="ed-hero__eyebrow">{heroEyebrow}</p>
+      <h1 class="ed-hero__title" id="home-hero-title" aria-label={heroTitle}>
+        {heroTitleLead}
+        <em>{heroTitleAccent}</em>
+      </h1>
+      <p class="ed-hero__copy">{heroSubtitle}</p>
+
+      <div class="ed-hero__actions">
+        <a
+          class="button button--cream"
+          href={site.booking}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Book a free consultation
+          <span class="sr-only"> (opens in a new tab)</span>
+        </a>
+        <a class="text-link" href="/portfolio/">Explore the portfolio</a>
+      </div>
+
+      <p class="ed-hero__note">
+        <span>Over ten years of wedding floristry</span>
+        <span>Complimentary consultation</span>
+        <span>Niagara &amp; St. Catharines</span>
+      </p>
+    </div>
+  </div>
+</section>
