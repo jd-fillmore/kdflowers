@@ -527,6 +527,7 @@
 
 .ed-why__item h3 {
   margin-bottom: 0.55rem;
+  color: var(--white);
   font-size: clamp(1.2rem, 1.7vw, 1.45rem);
 }
 

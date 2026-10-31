@@ -97,9 +97,9 @@ export const home = {
   aboutAlt: "cheap bridal bouquets niagara and st. catharines",
   services: {
     eyebrow: "What I create",
-    title: "From your bouquet to the last boutonnière.",
+    title: "Wedding Flowers & Bridal Bouquets in Niagara",
     intro:
-      "Every piece is designed as part of the whole—so the flowers in your hands, on the people beside you and in the room all feel unmistakably yours.",
+      "From your bridal bouquet and bridesmaid flowers to the finishing touches that bring your wedding day together.",
     items: [
       {
         title: "Bridal bouquets",
@@ -144,8 +144,9 @@ export const home = {
   },
   process: {
     mainTitle:
-      "Your Wedding Flower Journey, From First Consultation to Wedding Day",
-    mainSubtitle: "How I can help you",
+      "Planning Your Wedding Flowers in Niagara: From Consultation to Wedding Day",
+    mainSubtitle:
+      "A simple, personal process to bring your wedding flower vision to life.",
     steps: [
       {
         title: "Free Consultation",
